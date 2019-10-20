@@ -4,7 +4,29 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="text-center">
+        <h1 class="display-4">Welcome to Egyptian Rat Screw</h1>
+        <div id="rules">
+            <h3>How to play Egyptian Rat Screw</h3>
+            <ul class="list-group">
+                <li class="list-group-item active"><b>Home the game Plays:</b></li>
+                <li class="list-group-item">The game starts by shuffling a deck of 52 cards into two piles of 26 cards, each player having a pile.  The main deck in the middle has 0 cards.</li>
+                <li class="list-group-item list-group-item-secondary">Each player takes turns playing (usually) one card at a time from his or her hand into the main deck.</li>
+                <li class="list-group-item">You can slap if two successive cards are the same value (2-10, J, Q, K, A) appear on the main deck stack. Suits don't matter.  The winner of the slap plays the next card.</li>
+                <li class="list-group-item list-group-item-secondary">Slapping illegally is penalized by losing two cards into the BOTTOM of the main deck. Turn order resumes as it should.</li>
+                <li class="list-group-item">Each player takes turns alternating placing a card into the main deck.</li>
+                <li class="list-group-item active"><b>How Face Cards work:</b></li>
+                <li class="list-group-item">If a player plays a Queen, the other player must play 2 cards. If any of those two cards are a face card (J, Q, K, or A), then the rule restarts for that face card. Note, if the first card was Q, then it's slappable. If that card was 2-10, the person who played the Q gets the main deck.
+                <li class="list-group-item list-group-item-secondary">If a player plays a Jack, the other player must play 3 cards. If any of those three cards are a face card (J, Q, K, or A), then the rule restarts for that face card. Note, if the first card was K, then it's slappable. If that card was 2-10, the person who played the K  gets the main deck.</li>
+                <li class="list-group-item">If a player plays a King, the other player must play 4 cards. If any of those four cards are a face card (J, Q, K, or A), then the rule restarts for that face card. Note, if the first card was K, then it's slappable. If that card was 2-10, the person who played the K  gets the main deck.</li>
+                <li class="list-group-item list-group-item-secondary">If a player plays a Ace, the other player must play 4 cards. If any of those four cards are a face card (J, Q, K, or A), then the rule restarts for that face card. Note, if the first card was K, then it's slappable. If that card was 2-10, the person who played the K  gets the main deck.</li>
+            </ul>
+        </div>
+        <button type="button" ID="ruleShow" class="btn btn-secondary">Show Rules</button>
+
+        <a asp-page="playGame">
+            <button type="button" class="btn btn-primary">PlayGame</button>
+        </a>
+
+
+    </div>

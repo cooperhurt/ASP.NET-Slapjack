@@ -2,3 +2,17 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your Javascript code.
+
+//Intilazation
+document.getElementById("rules").style.display = "none";
+
+document.getElementById("ruleShow").addEventListener("click", displayRules);
+
+function displayRules() {
+    if (document.getElementById("rules").style.display === "inline") {
+        document.getElementById("rules").style.display = "none";
+        return;
+    }
+    document.getElementById("rules").style.display = "inline";
+}
+
