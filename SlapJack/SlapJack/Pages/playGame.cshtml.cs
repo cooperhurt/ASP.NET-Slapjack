@@ -9,6 +9,7 @@ namespace SlapJack.Pages
 {
     public class playGameModel : PageModel
     {
+
         public void OnGet()
         {
 
@@ -37,7 +38,7 @@ namespace SlapJack.Pages
     {
         public List<Card> cards = new List<Card>();
 
-        public static List<Card> createDeck()
+        public static Queue<Card> CreateDeck()
         {
             Queue<Card> deck = new Queue<Card>();
             foreach (CardNumber num in Enum.GetValues(typeof(CardNumber)))

@@ -30,3 +30,4 @@ C:\Users\noret\Documents\GitHub\CS3750-GroupAssignment\SlapJack\SlapJack\obj\Deb
 C:\Users\noret\Documents\GitHub\CS3750-GroupAssignment\SlapJack\SlapJack\obj\Debug\netcoreapp2.2\SlapJack.dll
 C:\Users\noret\Documents\GitHub\CS3750-GroupAssignment\SlapJack\SlapJack\obj\Debug\netcoreapp2.2\SlapJack.pdb
 C:\Users\noret\Documents\GitHub\CS3750-GroupAssignment\SlapJack\SlapJack\obj\Debug\netcoreapp2.2\SlapJack.csproj.CopyComplete
+C:\Users\noret\Documents\GitHub\CS3750-GroupAssignment\SlapJack\SlapJack\obj\Debug\netcoreapp2.2\Razor\Pages\playGame.cshtml.g.cs
