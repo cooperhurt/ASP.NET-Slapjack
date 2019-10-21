@@ -4,5 +4,46 @@
     ViewData["Title"] = "playGame";
 }
 
+
+<button class='btn btn-success pull-right'>
+    Player 1's Name:
+</button>
+<button type="button" id="player1Name" class="btn btn-light" value=""></button>
+<script>
+    var name = prompt("What is your name?");
+    document.getElementById("player1Name").innerHTML = name;
+</script>
+
+<button class='btn btn-success pull-right'>
+    Player 2's Name:
+</button>
+<asp:Button ID="AddButton" Text="Add" OnClick="AddButton_Click" runat="server" />
+
+
 <h1>playGame</h1>
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Start Game</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
