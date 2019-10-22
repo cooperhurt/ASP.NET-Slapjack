@@ -5,27 +5,46 @@ using System.Threading.Tasks;
 
 namespace SlapJack
 {
-    public class Deck : Card
+    public class Game
     {
-        public List<Card> cards = new List<Card>();
 
-        public static Queue<Card> CreateDeck()
+        Player player1;
+        Player player2;
+        private Deck currDeck;
+
+        Game()
         {
-            Queue<Card> deck = new Queue<Card>();
-            foreach (CardNumber num in Enum.GetValues(typeof(CardNumber)))
-            {
-                foreach (Suits suit in Enum.GetValues(typeof(Suits)))
-                {
-                    deck.Enqueue(new Card()
-                    {
-                        Suits = suit,
-                        CardNumber = num,
-                        image = "img/" + suit.ToString() + "/" + num.ToString(),
-                    });
-                }
-            }
+            player1.Name = "";
+            player2.Name = "";
+            currDeck = new Deck();
+        }
 
-            return deck;
+        public void startGame()
+        {
+            dealHand();
+        }
+
+        public void dealHand()
+        {
+            int num = 0;
+            foreach(var card in currDeck.currentCard)
+            {
+                if(num % 2 == 0)
+                {
+                    player1.Hand.addCard(card);
+                }
+                player2.Hand.addCard(card);
+            }
+        }
+
+        public void player1Join(string name)
+        {
+            this.player1.Name = name;
+        }
+
+        public void player2Join(string name)
+        {
+            this.player2.Name = name;
         }
     }
 }
