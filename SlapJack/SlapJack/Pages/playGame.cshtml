@@ -1,7 +1,7 @@
 ﻿@page
 @model SlapJack.Pages.playGameModel
 @{
-    ViewData["Title"] = "playGame";
+    ViewData["Title"] = "Play Eyptian Rat Screw";
 }
 
 
@@ -47,12 +47,21 @@
     </div>
 </div>
 
-<asp:Button ID="HiddenButton" Text="Test" OnClick="btnHidden_Click" runat="server" />
-<asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Click" />
-
+<asp:Button id="Button1"
+            Text="Sort Ascending"
+            CommandName="Sort"
+            CommandArgument="Ascending"
+            OnCommand="CommandBtn_Click"
+            runat="server" />
 
 <br />
-<asp:Button id="Button1"
-            Text="Submit"
-            OnClick="SubmitBtn_Click"
-            runat="server" />
+
+<asp:DropDownList id="DropDown1" runat="server">
+    <asp:ListItem Value="0">0</asp:ListItem>
+    <asp:ListItem Value="1">1</asp:ListItem>
+    <asp:ListItem Value="2">2</asp:ListItem>
+    <asp:ListItem Value="3">3</asp:ListItem>
+    <asp:ListItem Value="4">4</asp:ListItem>
+</asp:DropDownList>
+
+<asp:label id="Message" runat="server" />

@@ -9,6 +9,11 @@ namespace SlapJack.Pages
 {
     public class playGameModel : PageModel
     {
+        public void CommandBtn_Click(Object sender, EventArgs e)
+        {
+            Console.WriteLine("Hello World!!");
+        }
+
         public void OnGet()
         {
 
