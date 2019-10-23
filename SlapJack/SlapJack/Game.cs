@@ -19,12 +19,12 @@ namespace SlapJack
             currDeck = new Deck();
         }
 
-        public void startGame()
+        public void StartGame()
         {
-            dealHand();
+            DealHand();
         }
 
-        public void dealHand()
+        public void DealHand()
         {
             int num = 0;
             foreach(var card in currDeck.currentCard)
@@ -37,12 +37,12 @@ namespace SlapJack
             }
         }
 
-        public void player1Join(string name)
+        public void Player1Join(string name)
         {
             this.player1.Name = name;
         }
 
-        public void player2Join(string name)
+        public void Player2Join(string name)
         {
             this.player2.Name = name;
         }
