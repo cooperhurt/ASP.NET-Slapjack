@@ -47,10 +47,29 @@
     </div>
 </div>
 
-<asp:Button id="Button1"
-            Text="Sort Ascending"
-            CommandName="Sort"
-            CommandArgument="Ascending"
-            OnCommand="CommandBtn_Click"
-            runat="server" />
+<button id="btn" type="submit" asp-route-data="foo" asp-page-handler="Way2">Way 2</button>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#btn").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "/pages/test/",
+                    data: {
+                        id: $("#button_1").val(),
+                        access_token: $("#access_token").val()
+                    },
+                    success: function (result) {
+                        alert('ok');
+                    },
+                    error: function (result) {
+                        alert('error');
+                    }
+                });
+            });
+        });
+</script>
+
 <br />
