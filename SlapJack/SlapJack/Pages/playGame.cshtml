@@ -47,29 +47,11 @@
     </div>
 </div>
 
-<button id="btn" type="submit" asp-route-data="foo" asp-page-handler="Way2">Way 2</button>
+<button id="btn" type="submit">Way 2</button>
 
 
     <script>
-        $(document).ready(function () {
-            $("#btn").click(function (e) {
-                e.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "/pages/test/",
-                    data: {
-                        id: $("#button_1").val(),
-                        access_token: $("#access_token").val()
-                    },
-                    success: function (result) {
-                        alert('ok');
-                    },
-                    error: function (result) {
-                        alert('error');
-                    }
-                });
-            });
-        });
+
 </script>
 
 <br />
