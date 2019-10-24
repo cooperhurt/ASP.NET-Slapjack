@@ -46,7 +46,7 @@
     </div>
 </div>
 
-<button id="btn" type="submit" asp-route-data="foo" asp-page-handler="Way2">Way 2</button>
+<button id="btn" type="submit">Way 2</button>
 
 <div class="container rounded border border-primary"  style="background-color:#eee;height:800px;margin-top:15px">
     <div class="row" style="min-height:100%">
@@ -60,25 +60,7 @@
 </div>
 
     <script>
-        $(document).ready(function () {
-            $("#btn").click(function (e) {
-                e.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "/pages/test/",
-                    data: {
-                        id: $("#button_1").val(),
-                        access_token: $("#access_token").val()
-                    },
-                    success: function (result) {
-                        alert('ok');
-                    },
-                    error: function (result) {
-                        alert('error');
-                    }
-                });
-            });
-        });
+
 </script>
 
 <br />

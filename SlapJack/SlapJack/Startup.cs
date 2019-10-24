@@ -31,7 +31,7 @@ namespace SlapJack
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
