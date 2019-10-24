@@ -20,7 +20,6 @@
 
 
 <h1>playGame</h1>
-
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
     Launch demo modal
@@ -49,6 +48,16 @@
 
 <button id="btn" type="submit" asp-route-data="foo" asp-page-handler="Way2">Way 2</button>
 
+<div class="container rounded border border-primary"  style="background-color:#eee;height:800px;margin-top:15px">
+    <div class="row" style="min-height:100%">
+        <div class="col" style="min-height:100%;background-color:red">
+           @* This is the div for the players deck, this can have a onclick event put on it to register the play button*@
+        </div>
+        <div class="col" style="min-height:100%;background-color:blue">
+           @* This is the div for the played cards, this can hve an onclick event to "slap" the deck*@
+        </div>
+    </div>
+</div>
 
     <script>
         $(document).ready(function () {
