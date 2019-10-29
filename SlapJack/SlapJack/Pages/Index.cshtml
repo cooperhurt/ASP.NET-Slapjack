@@ -28,5 +28,11 @@
             <button type="button" class="btn btn-primary">playgame</button>
         </a>
 
+        @foreach (var scale in Model.Scales)
+        {
+            <li class="mb-3">
+                <a href="listings-half-screen-map-list.html">@scale</a>
+            </li>
+        }
 
     </div>

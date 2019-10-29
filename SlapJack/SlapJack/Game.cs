@@ -75,11 +75,7 @@ namespace SlapJack
 
         }
 
-<<<<<<< HEAD
-        public string player2Play(int num)
-=======
         public void CheckFaceCard()
->>>>>>> 6de09c6e61bed42ff40ca6c38c69974500653391
         {
             if (currentTurn - 1 % 2 == 1)
             {
