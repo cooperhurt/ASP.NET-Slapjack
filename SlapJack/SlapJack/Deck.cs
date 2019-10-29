@@ -9,9 +9,8 @@ namespace SlapJack
     
     public class Deck : Card
     {
-        public Queue<Card> cards = new Queue<Card>();
+        public Queue<Card> cards { get; set; }
         
-        public Queue<Card> currentCard { get; set; }
 
         public Deck()
         {
@@ -20,7 +19,7 @@ namespace SlapJack
 
         public void addCard(Card currCard)
         {
-            currentCard.Enqueue(currCard);
+            cards.Enqueue(currCard);
         }
 
         public static Queue<Card> CreateDeck()

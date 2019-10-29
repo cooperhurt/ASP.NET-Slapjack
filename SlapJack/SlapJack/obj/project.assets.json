@@ -12936,23 +12936,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ork\\.nuget\\packages\\": {},
+    "C:\\Users\\noret\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ork\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
+      "projectUniqueName": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
       "projectName": "SlapJack",
-      "projectPath": "C:\\Users\\Ork\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
-      "packagesPath": "C:\\Users\\Ork\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ork\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\obj\\",
+      "projectPath": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
+      "packagesPath": "C:\\Users\\noret\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Ork\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\noret\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12999,10 +12999,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
