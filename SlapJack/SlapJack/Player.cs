@@ -9,5 +9,7 @@ namespace SlapJack
     {
         public string Name { get; set; }
         public Deck Hand { get; set; }
+        
+        public int numCards { get; set; }
     }
 }
