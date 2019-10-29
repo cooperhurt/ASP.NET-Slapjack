@@ -54,7 +54,7 @@ namespace SlapJack
             return player1.Hand.currentCard.Dequeue().image;
         }
 
-        public string player1Play(int num)
+        public string player2Play(int num)
         {
             return player2.Hand.currentCard.Dequeue().image;
         }

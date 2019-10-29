@@ -11,7 +11,7 @@ if (pageName == "playGame") {
 }
 
 
-//Game code that is neded
+//Game code that is needed
 $(document).ready(function () {
     $("#slap").click(function (e) {
         e.preventDefault();
