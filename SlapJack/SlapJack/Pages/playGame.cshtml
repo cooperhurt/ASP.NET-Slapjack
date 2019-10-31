@@ -50,7 +50,8 @@
 
 <div class="container rounded border border-primary gamewindow" style="background-color:#eee;height:800px;margin-top:15px">
     <div class="row flex-column flex-md-row" style="min-height:100%">
-        <div id="slap" class="col-lg-6 gamehighlight" style="min-height:100%;box-shadow: 2px,2px;" onclick=""> @*TODO: on click function for the players deck goes here*@
+        <div id="slap" class="col-lg-6 gamehighlight" style="min-height:100%;box-shadow: 2px,2px;" onclick="">
+            @*TODO: on click function for the players deck goes here*@
             <div class="row rounded-bottom border border-dark" style="min-height:10%;background-color:#ccc">
                 <div class="col-12" style="min-height:100%">
                     <div class="row align-items-center" style="min-height:100%">
@@ -72,35 +73,35 @@
                 </div>
             </div>
             <div class="row" style="min-height:10%">
-                 <div class="col-12 rounded-top border border-dark" style="min-height:100% !important;background-color:#ccc">
-                     <div class="row align-items-center" style="min-height:100%">
-                         <div class="col text-center" style="min-height:100%; line-height:0.55em">
-                             <span class="h1" style=" line-height:0.55em">193</span><span class="h1" style=" line-height:0.55em"> Cards</span>
-                         </div>
-                     </div>
-                 </div>
-            </div>
-              
-        </div>
-        <div class="col-lg-6 gamehighlight" style="min-height:100%;">
-                <div class="row rounded-bottom border border-dark" style="min-height:10%;background-color:#ccc;">
-                    <div class="col-12" style="min-height:100%">
-                        <div class="row align-items-center" style="min-height:100%">
-                            <div class="col text-center" style="min-height:100%">
-                                <span class="h1" style="line-height:0.55em">Slap</span>
-                            </div>
+                <div class="col-12 rounded-top border border-dark" style="min-height:100% !important;background-color:#ccc">
+                    <div class="row align-items-center" style="min-height:100%">
+                        <div class="col text-center" style="min-height:100%; line-height:0.55em">
+                            <span class="h1" style=" line-height:0.55em">193</span><span class="h1" style=" line-height:0.55em"> Cards</span>
                         </div>
                     </div>
                 </div>
-                <div class="row align-items-center" style="min-height:90%;max-height:90%">
-                    <div class="col-12 text-center" style="min-height:100% !important;">
-                        <img src="~/img/10C.png" class="img-fluid" style="height:400px;position:relative;width:auto;left:-75px;" />
-                        <img src="~/img/10D.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:-37.5px" />
-                        <img src="~/img/10H.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:0px" />
-                        <img src="~/img/10S.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:37.5px" />
-                        <img src="~/img/AH.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:75px"/>
+            </div>
+
+        </div>
+        <div class="col-lg-6 gamehighlight" style="min-height:100%;">
+            <div class="row rounded-bottom border border-dark" style="min-height:10%;background-color:#ccc;">
+                <div class="col-12" style="min-height:100%">
+                    <div class="row align-items-center" style="min-height:100%">
+                        <div class="col text-center" style="min-height:100%">
+                            <span class="h1" style="line-height:0.55em">Slap</span>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="row align-items-center" style="min-height:90%;max-height:90%">
+                <div class="col-12 text-center" style="min-height:100% !important;">
+                    <img src="~/img/10C.png" class="img-fluid" style="height:400px;position:relative;width:auto;left:-75px;" />
+                    <img src="~/img/10D.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:-37.5px" />
+                    <img src="~/img/10H.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:0px" />
+                    <img src="~/img/10S.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:37.5px" />
+                    <img src="~/img/AH.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:75px" />
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -113,8 +114,29 @@
 
 
 
-<script>
-
-</script>
+<div class="container">
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-6">&nbsp;</div>
+        <div class="col-6">
+            User..........<input type="text" id="userInput" />
+            <br />
+            Message...<input type="text" id="messageInput" />
+            <input type="button" id="sendButton" value="Send Message" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">&nbsp;</div>
+        <div class="col-6">
+            <ul id="messagesList"></ul>
+        </div>
+    </div>
+</div>
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
 
 <br />

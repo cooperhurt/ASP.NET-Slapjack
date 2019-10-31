@@ -4,10 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 
-
-namespace SlapJack.wwwroot.lib.signalr.Hubs
+namespace SlapJack.Hubs
 {
-    public class GameHub
+    public class MyHub : Hub
     {
         public async Task SendMessage(string user, string message)
         {
