@@ -4,12 +4,12 @@
     ViewData["Title"] = "Play Eyptian Rat Screw";
 }
 
-
 <button class='btn btn-success pull-right'>
     Player 1's Name:
 </button>
 <button type="button" id="player1Name" class="btn btn-light" value=""></button>
 <script>
+
     var name = prompt("What is your name?");
     document.getElementById("player1Name").innerHTML = name;
 </script>
@@ -48,17 +48,32 @@
 
 <button id="btn" type="submit">Way 2</button>
 
-<div class="container rounded border border-primary" style="background-color:#eee;height:800px;margin-top:15px">
-    <div class="row" style="min-height:100%">
-        <div class="col-6" style="min-height:100%;background-color:red" onclick="">
-            <div class="row" style="min-height:80%">
-                <div class="col-12" style="min-height:100% !important;background-color:green">
-
+<div class="container rounded border border-primary gamewindow" style="background-color:#eee;height:800px;margin-top:15px">
+    <div class="row flex-column flex-md-row" style="min-height:100%">
+        <div class="col-lg-6 gamehighlight" style="min-height:100%;box-shadow: 2px,2px;" onclick=""> @*TODO: on click function for the players deck goes here*@
+            <div class="row rounded-bottom border border-dark" style="min-height:10%;background-color:#ccc">
+                <div class="col-12" style="min-height:100%">
+                    <div class="row align-items-center" style="min-height:100%">
+                        <div class="col text-center" style="min-height:100%">
+                            <span class="h1" style="line-height:0.55em">Deck</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row" style="min-height:20%">
-                 <div class="col-12" style="min-height:100% !important;background-color:yellow">
-                     <div class="row align-items-center" style="min-height:100%;">
+            <div class="row align-items-center" style="min-height:80%;max-height:80%">
+                <div class="col-12 align-content-center" style="min-height:100% !important;">
+                    <div align="center">
+                        <img src="~/img/gray_back.png" class="img-fluid" style="height:400px;display:block;width:auto;position:relative;left:-5px;" />
+                        <img src="~/img/gray_back.png" class="img-fluid" style="height:400px;display:block;width:auto;position:relative;margin-top:-390px;left:-2.5px" />
+                        <img src="~/img/gray_back.png" class="img-fluid" style="height:400px;display:block;width:auto;position:relative;margin-top:-390px;left:0px" />
+                        <img src="~/img/gray_back.png" class="img-fluid" style="height:400px;display:block;width:auto;position:relative;margin-top:-390px;left:2.5px" />
+                        <img src="~/img/gray_back.png" class="img-fluid" style="height:400px;display:block;width:auto;position:relative;margin-top:-390px;left:5px" />
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="min-height:10%">
+                 <div class="col-12 rounded-top border border-dark" style="min-height:100% !important;background-color:#ccc">
+                     <div class="row align-items-center" style="min-height:100%">
                          <div class="col text-center" style="min-height:100%; line-height:0.55em">
                              <span class="h1" style=" line-height:0.55em">193</span><span class="h1" style=" line-height:0.55em"> Cards</span>
                          </div>
@@ -67,8 +82,25 @@
             </div>
               
         </div>
-        <div class="col-6" style="min-height:100%;background-color:blue">
-           @* This is the div for the played cards, this can hve an onclick event to "slap" the deck*@
+        <div class="col-lg-6 gamehighlight" style="min-height:100%;" onclick="">@*TODO: on click function for slapping goes here*@
+                <div class="row rounded-bottom border border-dark" style="min-height:10%;background-color:#ccc;">
+                    <div class="col-12" style="min-height:100%">
+                        <div class="row align-items-center" style="min-height:100%">
+                            <div class="col text-center" style="min-height:100%">
+                                <span class="h1" style="line-height:0.55em">Slap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center" style="min-height:90%;max-height:90%">
+                    <div class="col-12 text-center" style="min-height:100% !important;">
+                        <img src="~/img/10C.png" class="img-fluid" style="height:400px;position:relative;width:auto;left:-75px;" />
+                        <img src="~/img/10D.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:-37.5px" />
+                        <img src="~/img/10H.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:0px" />
+                        <img src="~/img/10S.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:37.5px" />
+                        <img src="~/img/AH.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:75px"/>
+                    </div>
+                </div>
         </div>
     </div>
 </div>
