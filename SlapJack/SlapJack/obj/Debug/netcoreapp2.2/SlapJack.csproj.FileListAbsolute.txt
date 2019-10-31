@@ -62,3 +62,4 @@ C:\Users\Ork\Documents\GitHub\CS3750-GroupAssignment\SlapJack\SlapJack\obj\Debug
 C:\Users\Ork\Documents\GitHub\CS3750-GroupAssignment\SlapJack\SlapJack\obj\Debug\netcoreapp2.2\SlapJack.dll
 C:\Users\Ork\Documents\GitHub\CS3750-GroupAssignment\SlapJack\SlapJack\obj\Debug\netcoreapp2.2\SlapJack.pdb
 C:\Users\Ork\Documents\GitHub\CS3750-GroupAssignment\SlapJack\SlapJack\obj\Debug\netcoreapp2.2\SlapJack.csproj.CopyComplete
+C:\Users\noret\Documents\GitHub\CS3750-GroupAssignment\SlapJack\SlapJack\bin\Debug\netcoreapp2.2\libman.json
