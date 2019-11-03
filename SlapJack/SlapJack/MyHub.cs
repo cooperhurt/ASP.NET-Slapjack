@@ -20,6 +20,8 @@ namespace SlapJack.Hubs
 
         public async Task UpdatePlayer(string user)
         {
+            string player1;
+            //Somehow get the other players name, and pass it into the second paramter
             await Clients.All.SendAsync("updatePlayer", user);
         }
 
@@ -30,16 +32,31 @@ namespace SlapJack.Hubs
             Random rand = new Random();
             int gameNumber = rand.Next(1000, 9999);
             createGame.gameID = gameNumber;
+            games.Add(createGame);
             //Create some function to update the user with the gameID for the other user to join
         }
 
         //This will allow the player to join the game
-        public void joinGame()
+        public void joinGame(int gameID, string user)
         {
+            Boolean added = false;
+
+            foreach(Game curr in games)
+            {
+                if(curr.gameID == gameID)
+                {
+                    curr.playerJoined(user);
+                    added = true;
+                    break;
+                }
+            }
             //Check to see if the game exists
 
             //Game doesn't Exist let the user know
-
+            if (!added)
+            {
+                //Send alert method to only that user
+            }
             //Game exist join the game let both users know
         }
 
@@ -55,6 +72,15 @@ namespace SlapJack.Hubs
         public void playerPlayed(string user)
         {
             //Check if it's the players turn, play the card
+        }
+
+        public async Task updateAllCards()
+        {
+            await Clients.All.SendAsync("updateCards", games[0].currentPlay[0],
+                                                       games[0].currentPlay[1], 
+                                                       games[0].currentPlay[2], 
+                                                       games[0].currentPlay[3], 
+                                                       games[0].currentPlay[4]);
         }
     }
 }
