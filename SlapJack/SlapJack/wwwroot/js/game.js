@@ -5,6 +5,8 @@
 
 //Intilazation
 var pageName = window.location.pathname;
+var player1 = "";
+var player2 = "";
 
 if (pageName == "playGame") {
     document.getElementById("player1Name").value = name;
@@ -26,6 +28,20 @@ connection.on("ReceiveMessage", function (user, message) {
     document.getElementById("messagesList").appendChild(li);
 });
 
+
+connection.on("UpdatePlayer", function (user) {
+    if (document.getElementById("player1").value = "") {
+        document.getElementById("player1").value = user;
+        alert("Player 1 updated!");
+    }
+    else {
+        document.getElementById("player2").value = user;
+        alert("Player 2 updated!");
+    }
+
+    //Call Join game?
+});
+
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
 }).catch(function (err) {
@@ -40,3 +56,25 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     });
     event.preventDefault();
 });
+
+function startGamePrompt() {
+    var name = prompt("What is your name?");
+    player1 = name;
+    document.getElementById("player1").value = name;
+    document.getElementById("playerInfo").style.visibility = "visible";
+    document.getElementById("startPlay").style.disabled = "true";
+    document.getElementById("gameArena").style.visibility = "visible";
+}
+
+function joinGamePrompt() {
+    var name = prompt("What is your name?");
+    player2 = name;
+    document.getElementById("player1").value = name;
+    document.getElementById("playerInfo").style.visibility = "visible";
+    document.getElementById("startPlay").style.disabled = "true";
+    document.getElementById("gameArena").style.visibility = "visible";
+    connection.invoke("updatePlayer", name).catch(function (err) {
+        return console.error(err.toString());
+    });
+    event.preventDefault();
+}

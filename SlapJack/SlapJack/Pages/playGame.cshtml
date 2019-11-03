@@ -4,51 +4,92 @@
     ViewData["Title"] = "Play Eyptian Rat Screw";
 }
 
-<button class='btn btn-success pull-right'>
-    Player 1's Name:
-</button>
-<button type="button" id="player1Name" class="btn btn-light" value=""></button>
-<script>
-
-    var name = prompt("What is your name?");
-    document.getElementById("player1Name").innerHTML = name;
-</script>
-
-<button class='btn btn-success pull-right'>
-    Player 2's Name:
-</button>
+<div id="playerInfo" style="visibility: hidden;">
+        <button class='btn btn-success pull-right'>
+            Player 1's Name:
+        </button>
+        <input type="text" id="player1" disabled />
 
 
-<h1>playGame</h1>
+        <button class='btn btn-success pull-right'>
+            Player 2's Name:
+        </button>
+        <input type="text" id="player2" disabled />
+</div>
+
+
+<h1>Play Eyptian Rat Screw!</h1>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Launch demo modal
-</button>
+<div id="GameInfo">
+    <button id="startPlay" type="button" style="" class="btn btn-primary" data-toggle="modal" data-target="#playGame">
+        Play/Start Game
+    </button>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#instructions">
+        Instructions
+    </button>
+</div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="playGame" tabindex="-1" role="dialog" aria-labelledby="playGame" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Start Game</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Join/Start Game</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <h4>Joining a Game</h4>
+                <ul>
+                    <li>Another user has started a game, and you have a game ID</li>
+                </ul>
+                <h4>Start a Game</h4>
+                <ul>
+                    <li>This will generate a game ID, give this to another player</li>
+                    <li>This will start a new game, not pick up a game.</li>
+                </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="joinGamePrompt()">Join Game</button>
+                <button type="button" class="btn btn-primary" onclick="startGamePrompt()">Start Game</button>
             </div>
         </div>
     </div>
 </div>
 
-<button id="btn" type="submit">Way 2</button>
 
-<div class="container rounded border border-primary gamewindow" style="background-color:#eee;height:800px;margin-top:15px">
+
+<div class="modal fade" id="instructions" tabindex="-1" role="dialog" aria-labelledby="instructions" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">How to Play</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="rules">
+                <h3>How to play Egyptian Rat Screw</h3>
+                <ul class="list-group">
+                    <li class="list-group-item active"><b>Home the game Plays:</b></li>
+                    <li class="list-group-item">The game starts by shuffling a deck of 52 cards into two piles of 26 cards, each player having a pile.  The main deck in the middle has 0 cards.</li>
+                    <li class="list-group-item list-group-item-secondary">Each player takes turns playing (usually) one card at a time from his or her hand into the main deck.</li>
+                    <li class="list-group-item">You can slap if two successive cards are the same value (2-10, J, Q, K, A) appear on the main deck stack. Suits don't matter.  The winner of the slap plays the next card.</li>
+                    <li class="list-group-item list-group-item-secondary">Slapping illegally is penalized by losing two cards into the BOTTOM of the main deck. Turn order resumes as it should.</li>
+                    <li class="list-group-item">Each player takes turns alternating placing a card into the main deck.</li>
+                    <li class="list-group-item active"><b>How Face Cards work:</b></li>
+                    <li class="list-group-item">If a player plays a Queen, the other player must play 2 cards. If any of those two cards are a face card (J, Q, K, or A), then the rule restarts for that face card. Note, if the first card was Q, then it's slappable. If that card was 2-10, the person who played the Q gets the main deck.
+                    <li class="list-group-item list-group-item-secondary">If a player plays a Jack, the other player must play 3 cards. If any of those three cards are a face card (J, Q, K, or A), then the rule restarts for that face card. Note, if the first card was K, then it's slappable. If that card was 2-10, the person who played the K  gets the main deck.</li>
+                    <li class="list-group-item">If a player plays a King, the other player must play 4 cards. If any of those four cards are a face card (J, Q, K, or A), then the rule restarts for that face card. Note, if the first card was K, then it's slappable. If that card was 2-10, the person who played the K  gets the main deck.</li>
+                    <li class="list-group-item list-group-item-secondary">If a player plays a Ace, the other player must play 4 cards. If any of those four cards are a face card (J, Q, K, or A), then the rule restarts for that face card. Note, if the first card was K, then it's slappable. If that card was 2-10, the person who played the K  gets the main deck.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="gameArena" class="container rounded border border-primary gamewindow" style="background-color:#eee;height:800px;margin-top:15px; visibility: hidden;" >
     <div class="row flex-column flex-md-row" style="min-height:100%">
         <div id="slap" class="col-lg-6 gamehighlight" style="min-height:100%;box-shadow: 2px,2px;" onclick="">
             @*TODO: on click function for the players deck goes here*@
@@ -119,7 +160,7 @@
     <div class="row">
         <div class="col-6">&nbsp;</div>
         <div class="col-6">
-            User..........<input type="text" id="userInput" />
+            User..........<input type="text" id="userInput" disabled />
             <br />
             Message...<input type="text" id="messageInput" />
             <input type="button" id="sendButton" value="Send Message" />

@@ -7,6 +7,7 @@ namespace SlapJack
 {
     public class Game
     {
+        public int gameID { get; set; }
 
         Player player1;
         Player player2;
@@ -17,15 +18,21 @@ namespace SlapJack
         bool play1Penalized;
         bool play2penalized;
 
-        Game()
+        public Game(string user)
         {
-            player1.Name = "";
+            player1.Name = user;
             player2.Name = "";
             play1Penalized = false;
             play2penalized = false;
             currentTurn = 1;
             currDeck = new Deck();
             currentPlay = new List<Card>();
+        }
+
+
+        public void playerJoined(string user)
+        {
+            player2.Name = user;
             StartGame();
         }
 
