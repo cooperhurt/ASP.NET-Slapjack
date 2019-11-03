@@ -9,10 +9,10 @@ namespace SlapJack
     {
         public int gameID { get; set; }
 
-        Player player1;
-        Player player2;
-        private Deck currDeck;
-        List<Card> currentPlay;
+        public Player player1 { get; set; }
+        public Player player2 { get; set; }
+        private Deck currDeck { get; set; }
+        public List<Card> currentPlay { get; set; }
 
         int currentTurn;
         bool play1Penalized;
@@ -21,9 +21,13 @@ namespace SlapJack
         public Game(string user)
         {
             player1.Name = user;
-            player2.Name = "";
+            player1.connectionID = "";
             play1Penalized = false;
+
+            player2.Name = "";
+            player2.connectionID = "";
             play2penalized = false;
+
             currentTurn = 1;
             currDeck = new Deck();
             currentPlay = new List<Card>();
@@ -33,6 +37,7 @@ namespace SlapJack
         public void playerJoined(string user)
         {
             player2.Name = user;
+            player2.connectionID = "";
             StartGame();
         }
 
@@ -63,6 +68,7 @@ namespace SlapJack
         }
 
 
+        //Switch currnent Turn to "user", but also identify whos turn it is
         public string PlayerPlay()
         {
             if (currentTurn % 2 == 1)

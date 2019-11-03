@@ -76,6 +76,7 @@ namespace SlapJack.Hubs
 
         public async Task updateAllCards()
         {
+            //The game index will need to be changed, also with the Clients.All this will only work for 1 game
             await Clients.All.SendAsync("updateCards", games[0].currentPlay[0],
                                                        games[0].currentPlay[1], 
                                                        games[0].currentPlay[2], 
