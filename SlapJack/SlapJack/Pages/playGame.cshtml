@@ -8,13 +8,13 @@
         <button class='btn btn-success pull-right'>
             Player 1's Name:
         </button>
-        <input type="text" id="player1" disabled />
+        <input type="text" id="player1" value="" disabled />
 
 
         <button class='btn btn-success pull-right'>
             Player 2's Name:
         </button>
-        <input type="text" id="player2" disabled />
+        <input type="text" id="player2" value="" disabled />
 </div>
 
 
@@ -52,7 +52,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="joinGamePrompt()">Join Game</button>
-                <button type="button" class="btn btn-primary" onclick="startGamePrompt()">Start Game</button>
+                <button id="startGame" type="button" class="btn btn-primary">Start Game</button>
             </div>
         </div>
     </div>

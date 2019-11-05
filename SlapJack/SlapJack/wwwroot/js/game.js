@@ -29,17 +29,11 @@ connection.on("ReceiveMessage", function (user, message) {
 });
 
 
-connection.on("UpdatePlayer", function (user) {
-    if (document.getElementById("player1").value = "") {
-        document.getElementById("player1").value = user;
-        alert("Player 1 updated!");
-    }
-    else {
-        document.getElementById("player2").value = user;
-        alert("Player 2 updated!");
-    }
 
-    //Call Join game?
+connection.on("UpdatePlayer", function (player1Name, player2Name) {
+    document.getElementById("player1").value = player1Name;
+    document.getElementById("player2").value = player2Name;
+    alert("done");
 });
 
 connection.start().then(function () {
@@ -57,19 +51,36 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     event.preventDefault();
 });
 
-function startGamePrompt() {
+
+document.getElementById("sendButton").addEventListener("click", function (event) {
+    var user = document.getElementById("userInput").value;
+    var message = document.getElementById("messageInput").value;
+    connection.invoke("SendMessage", user, message).catch(function (err) {
+        return console.error(err.toString());
+    });
+    event.preventDefault();
+});
+
+
+
+document.getElementById("startGame").addEventListener("click", function (event) {
     var name = prompt("What is your name?");
-    player1 = name;
     document.getElementById("player1").value = name;
     document.getElementById("playerInfo").style.visibility = "visible";
     document.getElementById("startPlay").style.disabled = "true";
     document.getElementById("gameArena").style.visibility = "visible";
-}
+    connection.invoke("StartGame", name).catch(function (err) {
+        return console.error(err.toString());
+    });
+    event.preventDefault();
+});
+
+
 
 function joinGamePrompt() {
     var name = prompt("What is your name?");
     player2 = name;
-    document.getElementById("player1").value = name;
+    document.getElementById("player2").value = name;
     document.getElementById("playerInfo").style.visibility = "visible";
     document.getElementById("startPlay").style.disabled = "true";
     document.getElementById("gameArena").style.visibility = "visible";

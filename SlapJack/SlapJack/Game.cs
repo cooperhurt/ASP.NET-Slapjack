@@ -11,26 +11,28 @@ namespace SlapJack
 
         public Player player1 { get; set; }
         public Player player2 { get; set; }
-        private Deck currDeck { get; set; }
+        public Deck currDeck { get; set; }
         public List<Card> currentPlay { get; set; }
 
+
         int currentTurn;
-        bool play1Penalized;
-        bool play2penalized;
+
+        
+        public static Game curr;
 
         public Game(string user)
         {
+            player1 = new Player();
+            player2 = new Player();
+            currDeck = new Deck();
+            currentPlay = new List<Card>();
             player1.Name = user;
             player1.connectionID = "";
-            play1Penalized = false;
 
             player2.Name = "";
             player2.connectionID = "";
-            play2penalized = false;
 
             currentTurn = 1;
-            currDeck = new Deck();
-            currentPlay = new List<Card>();
         }
 
 
@@ -74,18 +76,19 @@ namespace SlapJack
             if (currentTurn % 2 == 1)
             {
                 currentTurn++;
-                Card removeCard1 = player1.Hand.cards.Dequeue();
+                Card removeCard1 = player1.Hand.cards[0];
+                player1.Hand.cards.RemoveAt(0);
                 player1.numCards--;
                 currentPlay.Add(removeCard1);
                 return removeCard1.image;
             }
 
             currentTurn++;
-            Card removeCard = player2.Hand.cards.Dequeue();
+            Card removeCard = player2.Hand.cards[0];
+            player2.Hand.cards.RemoveAt(0);
             player2.numCards--;
             currentPlay.Add(removeCard);
             return removeCard.image;
-
         }
 
         public void CheckFaceCard()
@@ -134,7 +137,8 @@ namespace SlapJack
         {
             for (int i = 0; i < numCards; i++)
             {
-                currentPlay.Add(curr.Hand.cards.Dequeue());
+                currentPlay.Add(curr.Hand.cards[0]);
+                curr.Hand.cards.RemoveAt(0);
                 curr.numCards--;
             }
 
@@ -142,11 +146,13 @@ namespace SlapJack
 
         public void Slap()
         {
+            Boolean validSlap = false;
             //Check sandwhich
             if (currentPlay[0].num == currentPlay[1].num)
             {
                 //Determine whos wins add this to the players deck
                 AddCards(player1);
+                validSlap = true;
             }
             //check 2 of same card
         }
@@ -155,7 +161,7 @@ namespace SlapJack
         {
             foreach(Card currCard in currentPlay)
             {
-                curr.Hand.cards.Enqueue(currCard);
+                curr.Hand.cards.Add(currCard);
                 currentPlay.RemoveAt(0);
                 curr.numCards++;
             }

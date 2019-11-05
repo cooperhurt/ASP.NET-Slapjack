@@ -9,7 +9,7 @@ namespace SlapJack
     
     public class Deck : Card
     {
-        public Queue<Card> cards { get; set; }
+        public List<Card> cards { get; set; }
         
 
         public Deck()
@@ -19,17 +19,17 @@ namespace SlapJack
 
         public void addCard(Card currCard)
         {
-            cards.Enqueue(currCard);
+            cards.Add(currCard);
         }
 
-        public static Queue<Card> CreateDeck()
+        public static List<Card> CreateDeck()
         {
-            Queue<Card> deck = new Queue<Card>();
+            List<Card> deck = new List<Card>();
             foreach (CardNumber num in Enum.GetValues(typeof(CardNumber)))
             {
                 foreach (Suits suit in Enum.GetValues(typeof(Suits)))
                 {
-                    deck.Enqueue(new Card()
+                    deck.Add(new Card()
                     {
                         Suits = suit,
                         CardNumber = num,
@@ -37,6 +37,8 @@ namespace SlapJack
                     });
                 }
             }
+            //Random rnd = new Random();
+            //deck.Sort((a, b) => 1 - 2 * rnd.Next(0, 100));
 
             return deck;
         }
