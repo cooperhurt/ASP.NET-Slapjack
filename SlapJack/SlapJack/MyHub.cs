@@ -82,32 +82,48 @@ namespace SlapJack.Hubs
             //Chanage this logic because we need to see if other values are null before we push this or we will get a null point exception
             //may need to test this.
 
-            switch (currentGame.currentPlay.Count)
+            int numCards = currentGame.currentPlay.Count;
+            switch (numCards)
             {
                 case 1:
-                    await Clients.All.SendAsync("updateCards", currentGame.currentPlay[0].image);
+                    await Clients.All.SendAsync("updateCards", currentGame.player1.numCards, currentGame.player1.Name, currentGame.player2.numCards, currentGame.player2.Name,
+                                                               "img/gray_back.png", 
+                                                               "img/gray_back.png", 
+                                                               "img/gray_back.png", 
+                                                               "img/gray_back.png",
+                                                               currentGame.currentPlay[0].image);
                     break;
                 case 2:
-                    await Clients.All.SendAsync("updateCards", currentGame.currentPlay[0].image,
+                    await Clients.All.SendAsync("updateCards", currentGame.player1.numCards, currentGame.player1.Name, currentGame.player2.numCards, currentGame.player2.Name,
+                                                               "img/gray_back.png",
+                                                               "img/gray_back.png",
+                                                               "img/gray_back.png",
+                                                               currentGame.currentPlay[0].image,
                                                                currentGame.currentPlay[1].image);
                     break;
                 case 3:
-                    await Clients.All.SendAsync("updateCards", currentGame.currentPlay[0].image,
+                    await Clients.All.SendAsync("updateCards", currentGame.player1.numCards, currentGame.player1.Name, currentGame.player2.numCards, currentGame.player2.Name,
+                                                               "img/gray_back.png",
+                                                               "img/gray_back.png",
+                                                               currentGame.currentPlay[0].image,
                                                                currentGame.currentPlay[1].image,
                                                                currentGame.currentPlay[2].image);
                     break;
                 case 4:
-                    await Clients.All.SendAsync("updateCards", currentGame.currentPlay[0].image,
+                    await Clients.All.SendAsync("updateCards", currentGame.player1.numCards, currentGame.player1.Name, currentGame.player2.numCards, currentGame.player2.Name,
+                                                               "img/gray_back.png",
+                                                               currentGame.currentPlay[0].image,
                                                                currentGame.currentPlay[1].image,
                                                                currentGame.currentPlay[2].image,
                                                                currentGame.currentPlay[3].image);
                     break;
                 default:
-                    await Clients.All.SendAsync("updateCards", currentGame.currentPlay[0].image,
-                                                               currentGame.currentPlay[1].image,
-                                                               currentGame.currentPlay[2].image,
-                                                               currentGame.currentPlay[3].image,
-                                                               currentGame.currentPlay[4].image);
+                    await Clients.All.SendAsync("updateCards", currentGame.player1.numCards, currentGame.player1.Name, currentGame.player2.numCards, currentGame.player2.Name,
+                                                               currentGame.currentPlay[numCards - 5].image,
+                                                               currentGame.currentPlay[numCards - 4].image,
+                                                               currentGame.currentPlay[numCards - 3].image,
+                                                               currentGame.currentPlay[numCards - 2].image,
+                                                               currentGame.currentPlay[numCards - 1].image);
                     break;
             }
 

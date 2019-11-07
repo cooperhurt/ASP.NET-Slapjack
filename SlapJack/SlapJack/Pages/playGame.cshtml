@@ -4,7 +4,7 @@
     ViewData["Title"] = "Play Eyptian Rat Screw";
 }
 
-<div id="playerInfo" style="visibility: hidden;">
+    <div id="playerInfo" style="visibility: hidden;">
         <button class='btn btn-success pull-right'>
             Player 1's Name:
         </button>
@@ -15,7 +15,9 @@
             Player 2's Name:
         </button>
         <input type="text" id="player2" value="" disabled />
-</div>
+        <input type="text" id="myName" value="" hidden />
+
+    </div>
 
 
 <h1>Play Eyptian Rat Screw!</h1>
@@ -117,7 +119,7 @@
                 <div class="col-12 rounded-top border border-dark" style="min-height:100% !important;background-color:#ccc">
                     <div class="row align-items-center" style="min-height:100%">
                         <div class="col text-center" style="min-height:100%; line-height:0.55em">
-                            <span class="h1" style=" line-height:0.55em">193</span><span class="h1" style=" line-height:0.55em"> Cards</span>
+                            <span id="numberOfCards" class="h1" style=" line-height:0.55em"></span><span class="h1" style=" line-height:0.55em"> Cards</span>
                         </div>
                     </div>
                 </div>

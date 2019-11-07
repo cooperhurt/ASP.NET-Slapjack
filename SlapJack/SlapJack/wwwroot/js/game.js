@@ -31,11 +31,16 @@ connection.on("ReceiveMessage", function (user, message) {
 connection.on("UpdatePlayer", function (player1Name, player2Name) {
     document.getElementById("player1").value = player1Name;
     document.getElementById("player2").value = player2Name;
-    alert("done");
 });
 
 
-connection.on("updateCards", function (card1, card2, card3, card4, card5) {
+connection.on("updateCards", function (player1Name, player1Cards, player2Name, Player2Cards, card1, card2, card3, card4, card5) {
+    if (document.getElementById("myName").value = player1Name) {
+        document.getElementById("numberOfCards").innerHTML = player1Cards;
+    }
+    else {
+        document.getElementById("numberOfCards").innerHTML = Player2Cards;
+    }
     document.getElementById("card1").src = card1;
     document.getElementById("card2").src = card2;
     document.getElementById("card3").src = card3;
@@ -73,8 +78,9 @@ document.getElementById("sendButton").addEventListener("click", function (event)
 
 document.getElementById("startGame").addEventListener("click", function (event) {
     var name = prompt("What is your name?");
-    myName = myName;
+    myName = name;
     document.getElementById("player1").value = name;
+    document.getElementById("myName").value = name
     document.getElementById("playerInfo").style.visibility = "visible";
     document.getElementById("startPlay").style.disabled = "true";
     document.getElementById("gameArena").style.visibility = "visible";
@@ -89,7 +95,8 @@ document.getElementById("startGame").addEventListener("click", function (event) 
 function joinGamePrompt() {
     var name = prompt("What is your name?");
     myName = name;
-    document.getElementById("player2").value = name;
+    document.getElementById("player2").value = name; 
+    document.getElementById("myName").value = name
     document.getElementById("playerInfo").style.visibility = "visible";
     document.getElementById("startPlay").style.disabled = "true";
     document.getElementById("gameArena").style.visibility = "visible";
@@ -104,13 +111,20 @@ document.getElementById("deckPlay").addEventListener("click", slapDeck);
 
 
 function slapDeck() {
-    connection.invoke("playerPlayed", myName).catch(function (err) {
+
+    var user = document.getElementById("myName").value;
+    connection.invoke("playerPlayed", user).catch(function (err) {
         return console.error(err.toString());
     });
 }
 
 function playCard() {
     alert("You played a card");
+    var user = document.getElementById("myName").value;
+    connection.invoke("playerPlayed", user).catch(function (err) {
+        return console.error(err.toString());
+    });
+
 }
 
 

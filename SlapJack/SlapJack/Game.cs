@@ -80,12 +80,14 @@ namespace SlapJack
                 player1.Hand.cards.RemoveAt(0);
                 player1.numCards--;
                 currentPlay.Add(removeCard1);
+                currentTurn = player2.Name;
                 return removeCard1.image;
             }
             Card removeCard = player2.Hand.cards[0];
             player2.Hand.cards.RemoveAt(0);
             player2.numCards--;
             currentPlay.Add(removeCard);
+            currentTurn = player1.Name;
             return removeCard.image;
         }
 
@@ -113,6 +115,7 @@ namespace SlapJack
                             PlayCards(5, player1);
                             break;
                     }
+                    currentTurn = player2.Name;
                 }
                 return;
             }
@@ -137,6 +140,7 @@ namespace SlapJack
                         PlayCards(5, player1);
                         break;
                 }
+                currentTurn = player1.Name;
             }
             return;
 
