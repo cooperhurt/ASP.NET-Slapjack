@@ -34,7 +34,7 @@ connection.on("UpdatePlayer", function (player1Name, player2Name) {
 });
 
 
-connection.on("updateCards", function (player1Name, player1Cards, player2Name, Player2Cards, card1, card2, card3, card4, card5) {
+connection.on("updateCards", function (player1Cards, player1Name, Player2Cards, player2Name, card1, card2, card3, card4, card5) {
     if (document.getElementById("myName").value = player1Name) {
         document.getElementById("numberOfCards").innerHTML = player1Cards;
     }
