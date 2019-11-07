@@ -48,6 +48,7 @@ namespace SlapJack.Hubs
         public async Task joinGame(int gameID, string user)
         {
             currentGame.player2.Name = user;
+            currentGame.player2.connectionID = Context.ConnectionId;
             await Clients.All.SendAsync("updateUserNames", currentGame.player1.Name, currentGame.player2.Name);
             await updateAllCards();
         }

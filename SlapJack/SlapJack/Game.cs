@@ -146,6 +146,7 @@ namespace SlapJack
 
         }
 
+        //We may need to change the RemoveAt portion
         public void PlayCards(int numCards, Player curr)
         {
             for (int i = 0; i < numCards; i++)
@@ -157,21 +158,27 @@ namespace SlapJack
 
         }
 
-        public void Slap()
+        public void Slap(string user)
         {
             Boolean validSlap = false;
-            //Check sandwhich
-            if (currentPlay[0].num == currentPlay[1].num)
+            
+            //Top card is equal to the card underneath it.
+            if (currentPlay[currentPlay.Count].num == currentPlay[currentPlay.Count - 1].num)
             {
                 //Determine whos wins add this to the players deck
-                AddCards(player1);
+                if (player1.Name == user)
+                    AddCards(player1);
+                AddCards(player2);
+            
                 validSlap = true;
+                return;
             }
             //check 2 of same card
         }
 
         public void AddCards(Player curr)
         {
+            //We might need to remove at the max size?
             foreach(Card currCard in currentPlay)
             {
                 curr.Hand.cards.Add(currCard);

@@ -5,7 +5,6 @@
 
 //Intilazation
 var pageName = window.location.pathname;
-var myName = "";
 
 if (pageName == "playGame") {
     document.getElementById("player1Name").value = name;
@@ -35,7 +34,7 @@ connection.on("UpdatePlayer", function (player1Name, player2Name) {
 
 
 connection.on("updateCards", function (player1Cards, player1Name, Player2Cards, player2Name, card1, card2, card3, card4, card5) {
-    if (document.getElementById("myName").value = player1Name) {
+    if (document.getElementById("myName").value == player1Name) {
         document.getElementById("numberOfCards").innerHTML = player1Cards;
     }
     else {
@@ -107,11 +106,10 @@ function joinGamePrompt() {
 }
 
 
-document.getElementById("deckPlay").addEventListener("click", slapDeck);
-
+document.getElementById("deckPlay").addEventListener("click", playCard);
+document.getElementById("slapDeck").addEventListener("click", slapDeck)
 
 function slapDeck() {
-
     var user = document.getElementById("myName").value;
     connection.invoke("playerPlayed", user).catch(function (err) {
         return console.error(err.toString());
@@ -119,9 +117,8 @@ function slapDeck() {
 }
 
 function playCard() {
-    alert("You played a card");
     var user = document.getElementById("myName").value;
-    connection.invoke("playerPlayed", user).catch(function (err) {
+    connection.invoke("playerSlapped", user).catch(function (err) {
         return console.error(err.toString());
     });
 
