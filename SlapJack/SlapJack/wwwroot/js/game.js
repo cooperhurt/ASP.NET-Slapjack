@@ -36,6 +36,16 @@ connection.on("UpdatePlayer", function (player1Name, player2Name) {
     alert("done");
 });
 
+
+connection.on("updateCards", function (card1, card2, card3, card4, card5) {
+    document.getElementById("card1").src = card1;
+    document.getElementById("card2").src = card2;
+    document.getElementById("card3").src = card3;
+    document.getElementById("card4").src = card4;
+    document.getElementById("card5").src = card5;
+
+});
+
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
 }).catch(function (err) {

@@ -12,10 +12,12 @@ namespace SlapJack
         public Player player1 { get; set; }
         public Player player2 { get; set; }
         public Deck currDeck { get; set; }
+
+        public string currentTurn { get; set; }
+
         public List<Card> currentPlay { get; set; }
 
 
-        int currentTurn;
 
         
         public static Game curr;
@@ -28,11 +30,11 @@ namespace SlapJack
             currentPlay = new List<Card>();
             player1.Name = user;
             player1.connectionID = "";
+            currentTurn = player1.Name;
 
             player2.Name = "";
             player2.connectionID = "";
 
-            currentTurn = 1;
         }
 
 
@@ -71,19 +73,16 @@ namespace SlapJack
 
 
         //Switch currnent Turn to "user", but also identify whos turn it is
-        public string PlayerPlay()
+        public string PlayerPlay(string user)
         {
-            if (currentTurn % 2 == 1)
+            if (user == player1.Name)
             {
-                currentTurn++;
                 Card removeCard1 = player1.Hand.cards[0];
                 player1.Hand.cards.RemoveAt(0);
                 player1.numCards--;
                 currentPlay.Add(removeCard1);
                 return removeCard1.image;
             }
-
-            currentTurn++;
             Card removeCard = player2.Hand.cards[0];
             player2.Hand.cards.RemoveAt(0);
             player2.numCards--;
@@ -91,9 +90,9 @@ namespace SlapJack
             return removeCard.image;
         }
 
-        public void CheckFaceCard()
+        public void CheckFaceCard(string user)
         {
-            if (currentTurn - 1 % 2 == 1)
+            if (user == player1.Name )
             {
                 if ((int)currentPlay[0].num >= 11)
                 {
@@ -113,6 +112,7 @@ namespace SlapJack
                             break;
                     }
                 }
+                return;
             }
 
             switch ((int)currentPlay[0].num)

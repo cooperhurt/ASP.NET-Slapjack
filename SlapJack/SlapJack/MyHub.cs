@@ -19,11 +19,11 @@ namespace SlapJack.Hubs
             currentGame.player2.Name = user;
             //Somehow get the other players name, and pass it into the second paramter
             await Clients.All.SendAsync("updatePlayer", currentGame.player1.Name, currentGame.player2.Name);
+            await updateAllCards();
         }
 
         public async Task testFunction(string user)
         {
-            //currentGame.player2.Name = user;
             //Somehow get the other players name, and pass it into the second paramter
             await Clients.All.SendAsync(createObject(user));
         }
@@ -51,6 +51,7 @@ namespace SlapJack.Hubs
         {
             currentGame.player2.Name = user;
             await Clients.All.SendAsync("updateUserNames", currentGame.player1.Name, currentGame.player2.Name );
+            await updateAllCards();
         }
 
 
@@ -73,11 +74,15 @@ namespace SlapJack.Hubs
         public async Task updateAllCards()
         {
             //The game index will need to be changed, also with the Clients.All this will only work for 1 game
-            await Clients.All.SendAsync("updateCards", games[0].currentPlay[0],
-                                                       games[0].currentPlay[1], 
-                                                       games[0].currentPlay[2], 
-                                                       games[0].currentPlay[3], 
-                                                       games[0].currentPlay[4]);
+            //Chanage this logic because we need to see if other values are null before we push this or we will get a null point exception
+            //may need to test this.
+            await Clients.All.SendAsync("updateCards", currentGame.player1.Hand.cards[0],
+                                                       currentGame.currentPlay[1].image,
+                                                       currentGame.currentPlay[2].image,
+                                                       currentGame.currentPlay[3].image,
+                                                       currentGame.currentPlay[4].image);
+
+
         }
     }
 }
