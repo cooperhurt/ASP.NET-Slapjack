@@ -5,8 +5,7 @@
 
 //Intilazation
 var pageName = window.location.pathname;
-var player1 = "";
-var player2 = "";
+var myName = "";
 
 if (pageName == "playGame") {
     document.getElementById("player1Name").value = name;
@@ -74,6 +73,7 @@ document.getElementById("sendButton").addEventListener("click", function (event)
 
 document.getElementById("startGame").addEventListener("click", function (event) {
     var name = prompt("What is your name?");
+    myName = myName;
     document.getElementById("player1").value = name;
     document.getElementById("playerInfo").style.visibility = "visible";
     document.getElementById("startPlay").style.disabled = "true";
@@ -88,7 +88,7 @@ document.getElementById("startGame").addEventListener("click", function (event) 
 
 function joinGamePrompt() {
     var name = prompt("What is your name?");
-    player2 = name;
+    myName = name;
     document.getElementById("player2").value = name;
     document.getElementById("playerInfo").style.visibility = "visible";
     document.getElementById("startPlay").style.disabled = "true";
@@ -98,3 +98,22 @@ function joinGamePrompt() {
     });
     event.preventDefault();
 }
+
+
+document.getElementById("deckPlay").addEventListener("click", slapDeck);
+
+
+function slapDeck() {
+    connection.invoke("playerPlayed", myName).catch(function (err) {
+        return console.error(err.toString());
+    });
+}
+
+function playCard() {
+    alert("You played a card");
+}
+
+
+connection.on("updateMessage", function (player1Name, message) {
+    alert("User " + player1Name + " " + message);
+});

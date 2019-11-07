@@ -8,9 +8,6 @@ namespace SlapJack.Hubs
 {
     public class MyHub : Hub
     {
-        //Do we want this in here or in the game class? Game class makes more sense
-        //As a side note maybe a "Logic" class would make more sense and then call the game class once we verified the input
-        public static List<Game> games;
 
         public static Game currentGame;
 
@@ -20,8 +17,8 @@ namespace SlapJack.Hubs
             //Somehow get the other players name, and pass it into the second paramter
             await Clients.All.SendAsync("updatePlayer", currentGame.player1.Name, currentGame.player2.Name);
             currentGame.DealHand();
-            await updateAllCards();
         }
+
 
         public async Task testFunction(string user)
         {
@@ -51,7 +48,7 @@ namespace SlapJack.Hubs
         public async Task joinGame(int gameID, string user)
         {
             currentGame.player2.Name = user;
-            await Clients.All.SendAsync("updateUserNames", currentGame.player1.Name, currentGame.player2.Name );
+            await Clients.All.SendAsync("updateUserNames", currentGame.player1.Name, currentGame.player2.Name);
             await updateAllCards();
         }
 
@@ -65,11 +62,18 @@ namespace SlapJack.Hubs
         }
 
         //This will all the user to play their card
-        public void playerPlayed(string user)
+        public async Task playerPlayed(string user)
         {
-            //Check if it's the players turn
+            if (currentGame.currentTurn == user)
+            {
+                currentGame.PlayerPlay(user);
+                await updateAllCards();
+            }
+            else
+            {
+                await Clients.All.SendAsync("updateMessage", currentGame.currentTurn, "It is not your turn");
 
-            //Play card if you can
+            }
         }
 
         public async Task updateAllCards()
@@ -77,12 +81,35 @@ namespace SlapJack.Hubs
             //The game index will need to be changed, also with the Clients.All this will only work for 1 game
             //Chanage this logic because we need to see if other values are null before we push this or we will get a null point exception
             //may need to test this.
-            await Clients.All.SendAsync("updateCards", currentGame.player1.Hand.cards[0].image,
-                                                       currentGame.player1.Hand.cards[0].image,
-                                                       currentGame.player1.Hand.cards[0].image,
-                                                       currentGame.player1.Hand.cards[0].image,
-                                                       currentGame.player1.Hand.cards[0].image);
 
+            switch (currentGame.currentPlay.Count)
+            {
+                case 1:
+                    await Clients.All.SendAsync("updateCards", currentGame.currentPlay[0].image);
+                    break;
+                case 2:
+                    await Clients.All.SendAsync("updateCards", currentGame.currentPlay[0].image,
+                                                               currentGame.currentPlay[1].image);
+                    break;
+                case 3:
+                    await Clients.All.SendAsync("updateCards", currentGame.currentPlay[0].image,
+                                                               currentGame.currentPlay[1].image,
+                                                               currentGame.currentPlay[2].image);
+                    break;
+                case 4:
+                    await Clients.All.SendAsync("updateCards", currentGame.currentPlay[0].image,
+                                                               currentGame.currentPlay[1].image,
+                                                               currentGame.currentPlay[2].image,
+                                                               currentGame.currentPlay[3].image);
+                    break;
+                default:
+                    await Clients.All.SendAsync("updateCards", currentGame.currentPlay[0].image,
+                                                               currentGame.currentPlay[1].image,
+                                                               currentGame.currentPlay[2].image,
+                                                               currentGame.currentPlay[3].image,
+                                                               currentGame.currentPlay[4].image);
+                    break;
+            }
 
         }
     }

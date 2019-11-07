@@ -18,7 +18,6 @@ namespace SlapJack
         public List<Card> currentPlay { get; set; }
 
 
-
         
         public static Game curr;
 
