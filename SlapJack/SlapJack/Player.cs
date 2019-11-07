@@ -11,5 +11,10 @@ namespace SlapJack
         public Deck Hand { get; set; }
         public string connectionID { get; set; }
         public int numCards { get; set; }
+
+        public Player()
+        {
+            Hand = new Deck();
+        }
     }
 }

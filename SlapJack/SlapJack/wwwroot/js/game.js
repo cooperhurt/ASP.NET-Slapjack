@@ -29,7 +29,6 @@ connection.on("ReceiveMessage", function (user, message) {
 });
 
 
-
 connection.on("UpdatePlayer", function (player1Name, player2Name) {
     document.getElementById("player1").value = player1Name;
     document.getElementById("player2").value = player2Name;

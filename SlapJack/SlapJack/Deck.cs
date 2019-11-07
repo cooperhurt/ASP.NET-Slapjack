@@ -9,10 +9,17 @@ namespace SlapJack
     
     public class Deck : Card
     {
+
+
+
         public List<Card> cards { get; set; }
         
-
         public Deck()
+        {
+            this.cards = new List<Card>();
+        }
+
+        public Deck(Boolean tmp)
         {
             this.cards = CreateDeck();
         }
@@ -25,20 +32,25 @@ namespace SlapJack
         public static List<Card> CreateDeck()
         {
             List<Card> deck = new List<Card>();
-            foreach (CardNumber num in Enum.GetValues(typeof(CardNumber)))
+            List<string> suit = new List<string>() { "S", "H", "D", "C" };
+            List<string> cardNum = new List<string>() { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
+
+            foreach (string typeSuit in suit)
             {
-                foreach (Suits suit in Enum.GetValues(typeof(Suits)))
+                foreach (string cardNumber in cardNum)
                 {
+
+
                     deck.Add(new Card()
                     {
-                        Suits = suit,
-                        CardNumber = num,
-                        image = "img/" + suit.ToString() + "/" + num.ToString(),
-                    });
+
+                        Suits = typeSuit,
+                        CardNumber = cardNumber,
+                        num = cardNumber,
+                        image = "img/"  + cardNumber + typeSuit + ".png",
+                    }); ;
                 }
             }
-            //Random rnd = new Random();
-            //deck.Sort((a, b) => 1 - 2 * rnd.Next(0, 100));
 
             return deck;
         }

@@ -26,7 +26,7 @@ namespace SlapJack
         {
             player1 = new Player();
             player2 = new Player();
-            currDeck = new Deck();
+            currDeck = new Deck(true);
             currentPlay = new List<Card>();
             player1.Name = user;
             player1.connectionID = "";
@@ -94,42 +94,52 @@ namespace SlapJack
         {
             if (user == player1.Name )
             {
-                if ((int)currentPlay[0].num >= 11)
+                if (currentPlay[0].num == "10" || currentPlay[0].num == "J" || currentPlay[0].num == "Q" || currentPlay[0].num == "K" || currentPlay[0].num == "A")
                 {
-                    switch ((int)currentPlay[0].num)
+                    switch (currentPlay[0].num)
                     {
-                        case 11:
+                        case "10":
                             PlayCards(1, player1);
                             break;
-                        case 12:
+                        case "J":
                             PlayCards(2, player1);
                             break;
-                        case 13:
+                        case "Q":
                             PlayCards(3, player1);
                             break;
-                        default:
+                        case "K":
                             PlayCards(4, player1);
+                            break;
+                        default:
+                            PlayCards(5, player1);
                             break;
                     }
                 }
                 return;
             }
 
-            switch ((int)currentPlay[0].num)
+            if (currentPlay[0].num == "10" || currentPlay[0].num == "J" || currentPlay[0].num == "Q" || currentPlay[0].num == "K" || currentPlay[0].num == "A")
             {
-                case 11:
-                    PlayCards(1, player2);
-                    break;
-                case 12:
-                    PlayCards(2, player2);
-                    break;
-                case 13:
-                    PlayCards(3, player2);
-                    break;
-                default:
-                    PlayCards(4, player2);
-                    break;
+                switch (currentPlay[0].num)
+                {
+                    case "10":
+                        PlayCards(1, player1);
+                        break;
+                    case "J":
+                        PlayCards(2, player1);
+                        break;
+                    case "Q":
+                        PlayCards(3, player1);
+                        break;
+                    case "K":
+                        PlayCards(4, player1);
+                        break;
+                    default:
+                        PlayCards(5, player1);
+                        break;
+                }
             }
+            return;
 
         }
 
