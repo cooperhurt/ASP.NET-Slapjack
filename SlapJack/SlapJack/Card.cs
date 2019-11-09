@@ -5,9 +5,6 @@ using System.Threading.Tasks;
 
 namespace SlapJack
 {
-
-
-
     public class Card
     {
         public string Suits { get; set; }
@@ -16,6 +13,6 @@ namespace SlapJack
         public string num { get; set; }
 
         public string image { get; set; }
-
+        
     }
 }
