@@ -58,7 +58,7 @@ namespace SlapJack.Hubs
                 await updateAllCards();
                 if (lost)
                 {
-                    //End Game 
+                    await Clients.All.SendAsync("updateMessage", Game.getWinner());
                 }
 
             }
