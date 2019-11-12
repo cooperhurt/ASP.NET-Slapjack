@@ -18,19 +18,6 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/hub").build();
 //Disable send button until connection is established
 document.getElementById("sendButton").disabled = true;
 
-
-connection.on("updateUserNames", function (players) {
-    document.getElementById("player1").value = players[0].name;
-    document.getElementById("player2").value = players[1].name;
-});
-
-
-connection.on("updateCards", function (displayCards) {
-    for (i = 0; i < 5; ++i){
-        document.getElementById("card" + i).src = displayCards[i].image;
-    }
-});
-
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
 }).catch(function (err) {
@@ -88,15 +75,6 @@ function joinGamePrompt() {
     event.preventDefault();
 }
 
-connection.on("collectPile", function () {
-    alert("You Got the Pile! Its your turn!");
-});
-
-connection.on("penalized", function () {
-    alert("You got penalized! Don't slap out of turn!");
-});
-
-
 document.getElementById("deckPlay").addEventListener("click", playCard);
 document.getElementById("slapDeck").addEventListener("click", slapDeck)
 
@@ -127,4 +105,24 @@ connection.on("ReceiveMessage", function (user, message) {
     var li = document.createElement("li");
     li.textContent = encodedMsg;
     document.getElementById("messagesList").appendChild(li);
+});
+
+connection.on("collectPile", function () {
+    alert("You Got the Pile! Its your turn!");
+});
+
+connection.on("penalized", function () {
+    alert("You got penalized! Don't slap out of turn!");
+});
+
+connection.on("updateUserNames", function (players) {
+    document.getElementById("player1").value = players[0].name;
+    document.getElementById("player2").value = players[1].name;
+});
+
+
+connection.on("updateCards", function (displayCards) {
+    for (i = 0; i < 5; ++i) {
+        document.getElementById("card" + i).src = displayCards[i].image;
+    }
 });
