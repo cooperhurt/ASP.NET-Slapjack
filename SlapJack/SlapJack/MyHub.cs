@@ -23,7 +23,7 @@ namespace SlapJack.Hubs
         public async Task JoinGame(string user)
         {
             Game.AddPlayer(user);
-            Game.StartGame();
+            Game.DealHand();
             await Clients.All.SendAsync("updateUserNames", Game.Players);
         }
 
