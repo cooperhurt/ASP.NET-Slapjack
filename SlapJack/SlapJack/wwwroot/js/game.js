@@ -75,7 +75,9 @@ function joinGamePrompt() {
     event.preventDefault();
 }
 
-document.getElementById("deckPlay").addEventListener("click", playCard);
+document.getElementById("deck5").addEventListener("click", playCard);
+document.getElementById("deck1").addEventListener("click", playCard);
+
 document.getElementById("slapDeck").addEventListener("click", slapDeck)
 
 function slapDeck() {
@@ -93,8 +95,9 @@ function playCard() {
 }
 
 
-connection.on("updateMessage", function (player1Name, message) {
-    alert("User " + player1Name + " " + message);
+connection.on("updateMessage", function (player) {
+    alert("Player named " + player.Name + " Won the game!");
+    window.location.replace("/");
 });
 
 

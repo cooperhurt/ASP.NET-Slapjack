@@ -13039,27 +13039,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Zach Wright\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\noret\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\practice\\homework\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
+      "projectUniqueName": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
       "projectName": "SlapJack",
-      "projectPath": "C:\\practice\\homework\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
-      "packagesPath": "C:\\Users\\Zach Wright\\.nuget\\packages\\",
-      "outputPath": "C:\\practice\\homework\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\obj\\",
+      "projectPath": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
+      "packagesPath": "C:\\Users\\noret\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Zach Wright\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\noret\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
