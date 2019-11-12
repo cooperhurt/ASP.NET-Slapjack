@@ -44,16 +44,15 @@ namespace SlapJack
             image = "img/gray_back.png"
         };
 
-<<<<<<< HEAD
+
         public static Boolean FaceCardPlayed { get; set; }
 
-=======
         /// <summary>
         /// This will get the players name
         /// </summary>
         /// <param name="name">This is the object that we want the name for</param>
-        /// <returns>A players name</returns>
->>>>>>> c6eab86d105eea2461a13bcc4ace8abe1fd4c498
+        ///<returns>A players name</returns>
+        ///
         public static Player GetPlayerByName(string name) {
             foreach (Player player in Players) {
                 if (name == player.Name) {
@@ -133,12 +132,10 @@ namespace SlapJack
                 player.Hand.cards.RemoveAt(0);
                 currDeck.cards.Insert(0, playedCard);
 
-<<<<<<< HEAD
-                if ((faceCardPlayed = CheckFaceCard(playedCard)) || TurnCounter < 0) {
-=======
-                if (CheckFaceCard(playedCard) || TurnCounter < 0)
->>>>>>> c6eab86d105eea2461a13bcc4ace8abe1fd4c498
+                if ((FaceCardPlayed = CheckFaceCard(playedCard)) || TurnCounter < 0)
+                {
                     ChangeTurn();
+                }
                 else if (TurnCounter == 0)
                 {
                     turnIndex = ((turnIndex - 1) == -1) ? Players.Count() - 1 : turnIndex - 1;
@@ -189,7 +186,6 @@ namespace SlapJack
                 case "K":
                     TurnCounter = 2;
                     isFaceCard = true;
-                    faceCard = 3;
                     break;
                 case "A":
                     TurnCounter = 3;

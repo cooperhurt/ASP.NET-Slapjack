@@ -25,6 +25,7 @@ namespace SlapJack.Hubs
             Game.AddPlayer(user);
             Game.DealHand();
             await Clients.All.SendAsync("updateUserNames", Game.Players);
+            updateAllCards();
         }
 
 
@@ -37,14 +38,14 @@ namespace SlapJack.Hubs
                 case  1:
                     Game.TakePile(player);
                     updateAllCards();
-                    await Clients.Caller.SendAsync("collectPile");
+                    await Clients.All.SendAsync("collectPile", player.Name);
                     break;
                 case  0:
                     break;
                 case -1:
                     Game.Penalize(player);
                     updateAllCards();
-                    await Clients.Caller.SendAsync("penalized");
+                    await Clients.All.SendAsync("penalized", player.Name);
                     break;
             }
         }
@@ -56,11 +57,24 @@ namespace SlapJack.Hubs
             if (Game.Players[Game.turnIndex] == player)
             {
                 bool lost = Game.PlayerPlay(player);
-                await updateAllCards();
-                if (lost)
-                {
-                    await Clients.All.SendAsync("updateMessage", Game.getWinner());
+                //Check Game.FaceCardPlayed for a boolean if a card was played, then check Game.TurnCounter to check what card it is. 0 = Jack, 1 = Queen, 2 = King, 3 = Ace
+                if(Game.FaceCardPlayed){ //Only sends the task if the card played was a face card
+                    String player2;
+                    if (player.Name != Game.Players[0].Name)
+                    {
+                        player2 = Game.Players[0].Name;
+                    } else
+                    {
+                        player2 = Game.Players[1].Name;
+                    }
+                    await Clients.All.SendAsync("updateFacePlayed", player.Name, player2, Game.TurnCounter);
                 }
+                await updateAllCards();
+                //Current commented this out because it was immediately ending the game on first turn 
+                //if (lost)
+                //{
+                //    await Clients.All.SendAsync("updateMessage", Game.getWinner());
+                //}
 
             }
 

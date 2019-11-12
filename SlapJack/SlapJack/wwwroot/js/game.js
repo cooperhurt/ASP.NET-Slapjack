@@ -75,10 +75,8 @@ function joinGamePrompt() {
     event.preventDefault();
 }
 
-document.getElementById("deck5").addEventListener("click", playCard);
-document.getElementById("deck1").addEventListener("click", playCard);
-
-document.getElementById("slapDeck").addEventListener("click", slapDeck)
+document.getElementById("deckPlay").addEventListener("click", playCard);
+document.getElementById("slapDeck").addEventListener("click", slapDeck);
 
 function slapDeck() {
     var user = document.getElementById("myName").value;
@@ -94,11 +92,11 @@ function playCard() {
     });
 }
 
-
-connection.on("updateMessage", function (player) {
-    alert("Player named " + player.Name + " Won the game!");
-    window.location.replace("/");
-});
+//---Similarly commented out as it was causeing issues and immediately ending the game on first turn.
+//connection.on("updateMessage", function (player) {
+//    alert("Player named " + player.Name + " Won the game!");
+//    window.location.replace("/");
+//});
 
 
 
@@ -110,12 +108,12 @@ connection.on("ReceiveMessage", function (user, message) {
     document.getElementById("messagesList").appendChild(li);
 });
 
-connection.on("collectPile", function () {
-    document.getElementById("statusMessage").innerHTML = "You Got the Pile! Its your turn!";
+connection.on("collectPile", function (playerName) {
+    document.getElementById("statusMessage").innerHTML = playerName + " Got the Pile! Its " + playerName + "'s turn!";
 });
 
-connection.on("penalized", function () {
-    document.getElementById("statusMessage").innerHTML = "You got penalized! Don't slap out of turn!"
+connection.on("penalized", function (playerName) {
+    document.getElementById("statusMessage").innerHTML = playerName + " got penalized! Don't slap out of turn!"
 });
 
 connection.on("updateUserNames", function (players) {
@@ -139,6 +137,26 @@ connection.on("updateCards", function (displayCards, players, turnIndex) {
         document.getElementById("numberOfCards").innerHTML = players[0].hand.cards.length;
     } else {
         document.getElementById("numberOfCards").innerHTML = players[1].hand.cards.length;
+    }
+});
+
+connection.on("updateFacePlayed", function (player1Name, player2Name, turnCounter) {
+    switch (turnCounter) {
+        case 0:
+            document.getElementById("statusMessage").innerHTML = player1Name + " played a Joker. " + player2Name + " has 1 turn to play a facecard.";
+            break;
+        case 1:
+            document.getElementById("statusMessage").innerHTML = player1Name + " played a King. " + player2Name + " has 2 turn to play a facecard.";
+            break;
+        case 2:
+            document.getElementById("statusMessage").innerHTML = player1Name + " played a Queen. " + player2Name + " has 3 turn to play a facecard.";
+            break;
+        case 3:
+            document.getElementById("statusMessage").innerHTML = player1Name + " played an Ace. " + player2Name + " has 4 turn to play a facecard.";
+            break;
+        default:
+            document.getElementById("statusMessage").innerHTML = "Bruh lol"
+            break;
     }
 });
 
