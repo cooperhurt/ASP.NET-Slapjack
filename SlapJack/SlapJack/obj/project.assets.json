@@ -8929,7 +8929,6 @@
       "path": "system.composition.convention/1.0.31",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/System.Composition.Convention.dll",
@@ -8972,7 +8971,6 @@
       "path": "system.composition.typedparts/1.0.31",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/System.Composition.TypedParts.dll",
@@ -12597,7 +12595,6 @@
       "path": "system.threading.tasks.parallel/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13039,39 +13036,23 @@
     ]
   },
   "packageFolders": {
-<<<<<<< Updated upstream
-    "C:\\Users\\noret\\.nuget\\packages\\": {},
-=======
     "C:\\Users\\Ork\\.nuget\\packages\\": {},
->>>>>>> Stashed changes
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< Updated upstream
-      "projectUniqueName": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
-      "projectName": "SlapJack",
-      "projectPath": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
-      "packagesPath": "C:\\Users\\noret\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\obj\\",
-=======
       "projectUniqueName": "C:\\Users\\Ork\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
       "projectName": "SlapJack",
       "projectPath": "C:\\Users\\Ork\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
       "packagesPath": "C:\\Users\\Ork\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Ork\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\obj\\",
->>>>>>> Stashed changes
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-<<<<<<< Updated upstream
-        "C:\\Users\\noret\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
         "C:\\Users\\Ork\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> Stashed changes
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13130,5 +13111,13 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Ork\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\obj\\SlapJack.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

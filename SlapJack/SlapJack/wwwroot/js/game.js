@@ -146,13 +146,13 @@ connection.on("updateFacePlayed", function (player1Name, player2Name, turnCounte
             document.getElementById("statusMessage").innerHTML = player1Name + " played a Joker. " + player2Name + " has 1 turn to play a facecard.";
             break;
         case 1:
-            document.getElementById("statusMessage").innerHTML = player1Name + " played a King. " + player2Name + " has 2 turn to play a facecard.";
+            document.getElementById("statusMessage").innerHTML = player1Name + " played a Queen. " + player2Name + " has 2 turns to play a facecard.";
             break;
         case 2:
-            document.getElementById("statusMessage").innerHTML = player1Name + " played a Queen. " + player2Name + " has 3 turn to play a facecard.";
+            document.getElementById("statusMessage").innerHTML = player1Name + " played a King. " + player2Name + " has 3 turns to play a facecard.";
             break;
         case 3:
-            document.getElementById("statusMessage").innerHTML = player1Name + " played an Ace. " + player2Name + " has 4 turn to play a facecard.";
+            document.getElementById("statusMessage").innerHTML = player1Name + " played an Ace. " + player2Name + " has 4 turns to play a facecard.";
             break;
         default:
             document.getElementById("statusMessage").innerHTML = "Bruh lol"
