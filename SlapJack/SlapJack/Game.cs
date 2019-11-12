@@ -8,17 +8,17 @@ namespace SlapJack
     public static class Game
     {
         /// <summary>
-        /// This is the game ID
+        /// This is the game ID for the current game object
         /// </summary>
         public static int gameID { get; set; }
 
         /// <summary>
-        /// 
+        /// This is a list of the players that are playing the game
         /// </summary>
         public static List<Player> Players = new List<Player>();
 
         /// <summary>
-        /// 
+        /// This is the deck that the players are currently adding to
         /// </summary>
         public static Deck currDeck = new Deck(true);
 
@@ -37,7 +37,7 @@ namespace SlapJack
         public static bool CardsClaimed = false;
 
         /// <summary>
-        /// 
+        /// This is a blank card image
         /// </summary>
         public static Card blankCard = new Card()
         {
@@ -45,10 +45,10 @@ namespace SlapJack
         };
 
         /// <summary>
-        /// 
+        /// This will get the players name
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="name">This is the object that we want the name for</param>
+        /// <returns>A players name</returns>
         public static Player GetPlayerByName(string name) {
             foreach (Player player in Players) {
                 if (name == player.Name) {
@@ -59,9 +59,9 @@ namespace SlapJack
         }
 
         /// <summary>
-        /// 
+        /// This will add a player to the game
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="user">This is the name of the player who wants to join the game</param>
         public static void AddPlayer(string user)
         {
             Player newPlayer = new Player()
@@ -72,16 +72,9 @@ namespace SlapJack
             Players.Add(newPlayer);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void StartGame()
-        {
-            DealHand();
-        }
 
         /// <summary>
-        /// 
+        /// This will deal the hands to the player
         /// </summary>
         public static void DealHand()
         {
@@ -101,7 +94,7 @@ namespace SlapJack
         }
 
         /// <summary>
-        /// 
+        /// This will change the turn for the player
         /// </summary>
         public static void ChangeTurn() {
             if (!(++turnIndex < Players.Count()))
@@ -111,9 +104,9 @@ namespace SlapJack
         }
 
         /// <summary>
-        /// 
+        /// This will give the middle deck to the player
         /// </summary>
-        /// <param name="player"></param>
+        /// <param name="player">This is the player that we need to add the cards to</param>
         public static void TakePile(Player player) {
             player.Hand.cards.AddRange(currDeck.cards);
             currDeck.cards.RemoveAll( c => true);
@@ -122,10 +115,10 @@ namespace SlapJack
         }
 
         /// <summary>
-        /// 
+        /// This is the method that will play the card for the player
         /// </summary>
-        /// <param name="player"></param>
-        /// <returns></returns>
+        /// <param name="player">The player who played the card</param>
+        /// <returns>IF the play actually happened.</returns>
         public static bool PlayerPlay(Player player)
         {
             if (player.Hand.cards.Any())
@@ -151,9 +144,9 @@ namespace SlapJack
         }
 
         /// <summary>
-        /// 
+        /// This will determine the winner of the game
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The winner of the game</returns>
         public static Player getWinner()
         {
             foreach (Player curr in Players)
@@ -167,10 +160,10 @@ namespace SlapJack
         }
 
         /// <summary>
-        /// 
+        /// This will check if there is a face card that was played.
         /// </summary>
-        /// <param name="card"></param>
-        /// <returns></returns>
+        /// <param name="card">The card that was palyed</param>
+        /// <returns>A Boolean if it is a face card or not</returns>
         public static bool CheckFaceCard(Card card)
         {
             bool isFaceCard = false;
