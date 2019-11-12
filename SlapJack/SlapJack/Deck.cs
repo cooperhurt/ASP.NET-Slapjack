@@ -9,26 +9,41 @@ namespace SlapJack
     
     public class Deck : Card
     {
-
-
-
+        /// <summary>
+        /// This is a list of the cards in a deck
+        /// </summary>
         public List<Card> cards { get; set; }
         
+        /// <summary>
+        /// This is the constrcutor for creating a deck
+        /// </summary>
         public Deck()
         {
             this.cards = new List<Card>();
         }
 
+        /// <summary>
+        /// This is an overloaded constructor for creating a players deck
+        /// </summary>
+        /// <param name="tmp">An overloaded paramter that is not used</param>
         public Deck(Boolean tmp)
         {
             this.cards = CreateDeck();
         }
 
+        /// <summary>
+        /// This will add a card to the deck
+        /// </summary>
+        /// <param name="currCard">This is the card that we want to add</param>
         public void addCard(Card currCard)
         {
             cards.Add(currCard);
         }
 
+        /// <summary>
+        /// This will create the deck for the game
+        /// </summary>
+        /// <returns>A full list of deck</returns>
         public static List<Card> CreateDeck()
         {
             List<Card> deck = new List<Card>();

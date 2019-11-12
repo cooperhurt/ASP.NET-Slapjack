@@ -23,7 +23,7 @@ namespace SlapJack.Hubs
         public async Task JoinGame(string user)
         {
             Game.AddPlayer(user);
-            Game.StartGame();
+            Game.DealHand();
             await Clients.All.SendAsync("updateUserNames", Game.Players);
         }
 
@@ -43,6 +43,7 @@ namespace SlapJack.Hubs
                     break;
                 case -1:
                     Game.Penalize(player);
+                    updateAllCards();
                     await Clients.Caller.SendAsync("penalized");
                     break;
             }
@@ -58,7 +59,7 @@ namespace SlapJack.Hubs
                 await updateAllCards();
                 if (lost)
                 {
-                    //End Game 
+                    await Clients.All.SendAsync("updateMessage", Game.getWinner());
                 }
 
             }
@@ -85,7 +86,7 @@ namespace SlapJack.Hubs
                 }
             }
 
-            await Clients.All.SendAsync("updateCards", displayedCards);
+            await Clients.All.SendAsync("updateCards", displayedCards, Game.Players, Game.turnIndex);
         }
     }
 }

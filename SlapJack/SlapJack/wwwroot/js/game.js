@@ -75,7 +75,9 @@ function joinGamePrompt() {
     event.preventDefault();
 }
 
-document.getElementById("deckPlay").addEventListener("click", playCard);
+document.getElementById("deck5").addEventListener("click", playCard);
+document.getElementById("deck1").addEventListener("click", playCard);
+
 document.getElementById("slapDeck").addEventListener("click", slapDeck)
 
 function slapDeck() {
@@ -93,8 +95,9 @@ function playCard() {
 }
 
 
-connection.on("updateMessage", function (player1Name, message) {
-    alert("User " + player1Name + " " + message);
+connection.on("updateMessage", function (player) {
+    alert("Player named " + player.Name + " Won the game!");
+    window.location.replace("/");
 });
 
 
@@ -108,21 +111,34 @@ connection.on("ReceiveMessage", function (user, message) {
 });
 
 connection.on("collectPile", function () {
-    alert("You Got the Pile! Its your turn!");
+    document.getElementById("statusMessage").innerHTML = "You Got the Pile! Its your turn!";
 });
 
 connection.on("penalized", function () {
-    alert("You got penalized! Don't slap out of turn!");
+    document.getElementById("statusMessage").innerHTML = "You got penalized! Don't slap out of turn!"
 });
 
 connection.on("updateUserNames", function (players) {
     document.getElementById("player1").value = players[0].name;
     document.getElementById("player2").value = players[1].name;
+    if (document.getElementById("myName").value == players[0].name) {
+        document.getElementById("numberOfCards").innerHTML = players[0].hand.cards.length;
+    } else {
+        document.getElementById("numberOfCards").innerHTML = players[1].hand.cards.length;
+    }
+    
 });
 
 
-connection.on("updateCards", function (displayCards) {
+connection.on("updateCards", function (displayCards, players, turnIndex) { 
     for (i = 0; i < 5; ++i) {
         document.getElementById("card" + i).src = displayCards[i].image;
     }
+    document.getElementById("currentTurn").innerHTML = players[turnIndex].name;
+    if (document.getElementById("myName").value == players[0].name) {
+        document.getElementById("numberOfCards").innerHTML = players[0].hand.cards.length;
+    } else {
+        document.getElementById("numberOfCards").innerHTML = players[1].hand.cards.length;
+    }
 });
+

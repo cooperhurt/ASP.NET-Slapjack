@@ -13039,27 +13039,40 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Zach Wright\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+<<<<<<< Updated upstream
+    "C:\\Users\\noret\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\Ork\\.nuget\\packages\\": {},
+>>>>>>> Stashed changes
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\practice\\homework\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
+<<<<<<< Updated upstream
+      "projectUniqueName": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
       "projectName": "SlapJack",
-      "projectPath": "C:\\practice\\homework\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
-      "packagesPath": "C:\\Users\\Zach Wright\\.nuget\\packages\\",
-      "outputPath": "C:\\practice\\homework\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\obj\\",
+      "projectPath": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
+      "packagesPath": "C:\\Users\\noret\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Ork\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
+      "projectName": "SlapJack",
+      "projectPath": "C:\\Users\\Ork\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
+      "packagesPath": "C:\\Users\\Ork\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ork\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\obj\\",
+>>>>>>> Stashed changes
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Zach Wright\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+<<<<<<< Updated upstream
+        "C:\\Users\\noret\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\Ork\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> Stashed changes
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
@@ -13100,7 +13113,7 @@
             "autoReferenced": true
           },
           "Microsoft.TypeScript.MSBuild": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers",
             "suppressParent": "All",
             "target": "Package",
             "version": "[3.6.4, )"
@@ -13111,16 +13124,10 @@
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }
