@@ -31,6 +31,8 @@ namespace SlapJack
             image = "img/gray_back.png"
         };
 
+        public static Boolean FaceCardPlayed { get; set; }
+
         public static Player GetPlayerByName(string name) {
             foreach (Player player in Players) {
                 if (name == player.Name) {
@@ -95,7 +97,7 @@ namespace SlapJack
                 player.Hand.cards.RemoveAt(0);
                 currDeck.cards.Insert(0, playedCard);
 
-                if (CheckFaceCard(playedCard) || TurnCounter < 0) {
+                if ((faceCardPlayed = CheckFaceCard(playedCard)) || TurnCounter < 0) {
                     ChangeTurn();
                 }
                 else if (TurnCounter == 0)
@@ -128,6 +130,7 @@ namespace SlapJack
                 case "K":
                     TurnCounter = 2;
                     isFaceCard = true;
+                    faceCard = 3;
                     break;
                 case "A":
                     TurnCounter = 3;
