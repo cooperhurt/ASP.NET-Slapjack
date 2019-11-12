@@ -5,163 +5,187 @@ using System.Threading.Tasks;
 
 namespace SlapJack
 {
-    public static class Game
+    public class Game
     {
-        public static int gameID { get; set; }
+        public int gameID { get; set; }
 
-        public static List<Player> Players = new List<Player>();
-        public static Deck currDeck = new Deck(true);
+        public Player player1 { get; set; }
+        public Player player2 { get; set; }
+        public Deck currDeck { get; set; }
 
-        /// <summary>
-        /// The index that points out which players turn it is.
-        /// </summary>
-        public static int turnIndex = 0;
-        /// <summary>
-        /// Counts the number of turns left before the previous players takes the pile
-        /// </summary>
-        public static int TurnCounter = -1;
+        public string currentTurn { get; set; }
 
-        /// <summary>
-        /// Tells whether the current pile has been claimed or not. Only changes to true on positive slap.
-        /// </summary>
-        public static bool CardsClaimed = false;
+        public List<Card> currentPlay { get; set; }
 
-        public static Card blankCard = new Card()
+
+        
+        public static Game curr;
+
+        public Game(string user)
         {
-            image = "img/gray_back.png"
-        };
+            player1 = new Player();
+            player2 = new Player();
+            currDeck = new Deck(true);
+            currentPlay = new List<Card>();
+            player1.Name = user;
+            player1.connectionID = "";
+            currentTurn = player1.Name;
 
-        public static Player GetPlayerByName(string name) {
-            foreach (Player player in Players) {
-                if (name == player.Name) {
-                    return player;
-                }
-            }
-            return null;
+            player2.Name = "";
+            player2.connectionID = "";
+
         }
 
-        public static void AddPlayer(string user)
+
+        public void playerJoined(string user)
         {
-            Player newPlayer = new Player()
-            {
-                Name = user,
-                connectionID = "",
-            };
-            Players.Add(newPlayer);
+            player2.Name = user;
+            player2.connectionID = "";
+            StartGame();
         }
 
-        public static void StartGame()
+        public void StartGame()
         {
             DealHand();
         }
 
-        public static void DealHand()
-        {
-            int deskSize = currDeck.cards.Count() / Players.Count();
-            //Split deck evenly
-            foreach (Player player in Players) {
-                player.Hand.cards.AddRange(currDeck.cards.Take(deskSize).ToList());
-                currDeck.cards = currDeck.cards.Skip(deskSize).ToList();
-            }
-            //Hand out remaining cards
-            if (currDeck.cards.Count() > 0) {
-                for (int i = 0; i < currDeck.cards.Count(); ++i) {
-                    Players[i].Hand.cards.Add(currDeck.cards[0]);
-                    currDeck.cards = currDeck.cards.Skip(1).ToList();
-                }
-            }
-        }
 
-        public static void ChangeTurn() {
-            if (!(++turnIndex < Players.Count()))
+        public void DealHand()
+        {
+            int num = 0;
+            foreach (var card in currDeck.cards)
             {
-                turnIndex = 0;
-            }
-        }
-
-        public static void TakePile(Player player) {
-            player.Hand.cards.AddRange(currDeck.cards);
-            currDeck.cards.RemoveAll( c => true);
-            turnIndex = Players.IndexOf(player);
-            TurnCounter = -1;
-        }
-
-        //Switch currnent Turn to "user", but also identify whos turn it is
-        public static bool PlayerPlay(Player player)
-        {
-            if (player.Hand.cards.Any()) {
-                CardsClaimed = false;
-                Card playedCard = player.Hand.cards[0];
-                player.Hand.cards.RemoveAt(0);
-                currDeck.cards.Insert(0, playedCard);
-
-                if (CheckFaceCard(playedCard) || TurnCounter < 0) {
-                    ChangeTurn();
-                }
-                else if (TurnCounter == 0)
+                if (num % 2 == 0)
                 {
-                    turnIndex = ((turnIndex - 1) == -1) ? Players.Count() - 1 : turnIndex - 1;
-                    TakePile(Players[turnIndex]);
+                    player1.Hand.addCard(card);
+                    num++;
                 }
                 else
                 {
-                    --TurnCounter;
+                    player2.Hand.addCard(card);
+                    num++;
                 }
-                return true;
             }
-            return false;
+            player1.numCards = player1.Hand.cards.Count;
+            player2.numCards = player2.Hand.cards.Count;
         }
 
-        public static bool CheckFaceCard(Card card)
+
+        //Switch currnent Turn to "user", but also identify whos turn it is
+        public string PlayerPlay(string user)
         {
-            bool isFaceCard = false;
-            switch (card.num)
+            if (user == player1.Name)
             {
-                case "J":
-                    TurnCounter = 0;
-                    isFaceCard = true;
-                    break;
-                case "Q":
-                    TurnCounter = 1;
-                    isFaceCard = true;
-                    break;
-                case "K":
-                    TurnCounter = 2;
-                    isFaceCard = true;
-                    break;
-                case "A":
-                    TurnCounter = 3;
-                    isFaceCard = true;
-                    break;
-                default:
-                    break;
+                Card removeCard1 = player1.Hand.cards[0];
+                player1.Hand.cards.RemoveAt(0);
+                player1.numCards--;
+                currentPlay.Add(removeCard1);
+                currentTurn = player2.Name;
+                return removeCard1.image;
             }
-            return isFaceCard;
+            Card removeCard = player2.Hand.cards[0];
+            player2.Hand.cards.RemoveAt(0);
+            player2.numCards--;
+            currentPlay.Add(removeCard);
+            currentTurn = player1.Name;
+            return removeCard.image;
         }
 
-        /// <summary>
-        /// Returns whether the individual won the cards
-        /// </summary>
-        /// <returns>1 take the pot, 0 no change, -1 penalize</returns>
-        public static int Slap()
+        public void CheckFaceCard(string user)
         {
-            if (!CardsClaimed && currDeck.cards.Count() >= 2 && currDeck.cards[0].CardNumber == currDeck.cards[1].CardNumber)
+            if (user == player1.Name )
             {
-                return  1;
+                if (currentPlay[0].num == "10" || currentPlay[0].num == "J" || currentPlay[0].num == "Q" || currentPlay[0].num == "K" || currentPlay[0].num == "A")
+                {
+                    switch (currentPlay[0].num)
+                    {
+                        case "10":
+                            PlayCards(1, player1);
+                            break;
+                        case "J":
+                            PlayCards(2, player1);
+                            break;
+                        case "Q":
+                            PlayCards(3, player1);
+                            break;
+                        case "K":
+                            PlayCards(4, player1);
+                            break;
+                        default:
+                            PlayCards(5, player1);
+                            break;
+                    }
+                    currentTurn = player2.Name;
+                }
+                return;
             }
-            else if (CardsClaimed && currDeck.cards.Count() >= 2) {
-                return  0;
+
+            if (currentPlay[0].num == "10" || currentPlay[0].num == "J" || currentPlay[0].num == "Q" || currentPlay[0].num == "K" || currentPlay[0].num == "A")
+            {
+                switch (currentPlay[0].num)
+                {
+                    case "10":
+                        PlayCards(1, player1);
+                        break;
+                    case "J":
+                        PlayCards(2, player1);
+                        break;
+                    case "Q":
+                        PlayCards(3, player1);
+                        break;
+                    case "K":
+                        PlayCards(4, player1);
+                        break;
+                    default:
+                        PlayCards(5, player1);
+                        break;
+                }
+                currentTurn = player1.Name;
             }
-            else {
-                return -1;
+            return;
+
+        }
+
+        //We may need to change the RemoveAt portion
+        public void PlayCards(int numCards, Player curr)
+        {
+            for (int i = 0; i < numCards; i++)
+            {
+                currentPlay.Add(curr.Hand.cards[0]);
+                curr.Hand.cards.RemoveAt(0);
+                curr.numCards--;
+            }
+
+        }
+
+        public void Slap(string user)
+        {
+            Boolean validSlap = false;
+            
+            //Top card is equal to the card underneath it.
+            if (currentPlay[currentPlay.Count].num == currentPlay[currentPlay.Count - 1].num)
+            {
+                //Determine whos wins add this to the players deck
+                if (player1.Name == user)
+                    AddCards(player1);
+                AddCards(player2);
+            
+                validSlap = true;
+                return;
+            }
+            //check 2 of same card
+        }
+
+        public void AddCards(Player curr)
+        {
+            //We might need to remove at the max size?
+            foreach(Card currCard in currentPlay)
+            {
+                curr.Hand.cards.Add(currCard);
+                currentPlay.RemoveAt(0);
+                curr.numCards++;
             }
         }
 
-        public static void Penalize(Player player) {
-            for (int i = 0; i < 3; ++i) {
-                currDeck.cards.Insert(currDeck.cards.Count() / 2, player.Hand.cards[0]);
-                player.Hand.cards.RemoveAt(0);
-            }
-        }
     }
 }
