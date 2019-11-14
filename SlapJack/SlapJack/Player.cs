@@ -31,6 +31,12 @@ namespace SlapJack
             Hand = new Deck();
         }
 
+        public Player(string name)
+        {
+            Hand = new Deck();
+            Name = name;
+        }
+
         /// <summary>
         /// This wiill return the connection id
         /// </summary>

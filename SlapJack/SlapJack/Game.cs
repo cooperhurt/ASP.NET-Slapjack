@@ -50,6 +50,22 @@ namespace SlapJack
 
         public static Boolean PileWon { get; set; }
 
+        public static void StartNewGame(string name, int game)
+        {
+            gameID = game;
+            Players = new List<Player>();
+            currDeck = new Deck(true);
+            turnIndex = 0;
+            TurnCounter = 0;
+            CardsClaimed = false;
+
+            Player player1 = new Player(name);
+            Players.Add(player1);
+            return;
+            
+        }
+
+
         /// <summary>
         /// This will get the players name
         /// </summary>
@@ -161,14 +177,19 @@ namespace SlapJack
         /// <returns>The winner of the game</returns>
         public static  Player getWinner()
         {
+
+            List<Player> winner = new List<Player>();
             foreach (Player curr in Players)
             {
-                if (curr.Hand.cards.Count() == 0)
-                    continue;
-                return curr;
+                if (curr.Hand.cards.Count() > 0)
+                    winner.Add(curr);
 
             }
-            return new Player();
+
+            if (winner.Count == 0)
+                return winner[0];
+
+            return null;
         }
 
         /// <summary>
