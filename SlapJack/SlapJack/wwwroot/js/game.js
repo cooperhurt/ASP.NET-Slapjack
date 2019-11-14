@@ -98,8 +98,6 @@ function playCard() {
 //    window.location.replace("/");
 //});
 
-
-
 connection.on("ReceiveMessage", function (user, message) {
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var encodedMsg = user + " says " + msg;
@@ -109,11 +107,11 @@ connection.on("ReceiveMessage", function (user, message) {
 });
 
 connection.on("collectPile", function (playerName) {
-    document.getElementById("statusMessage").innerHTML = playerName + " Got the Pile! Its " + playerName + "'s turn!";
+    document.getElementById("statusMessage").innerHTML = playerName + " Slapped the Pile! Its " + playerName + "'s turn!";
 });
 
 connection.on("penalized", function (playerName) {
-    document.getElementById("statusMessage").innerHTML = playerName + " got penalized! Don't slap out of turn!"
+    document.getElementById("statusMessage").innerHTML = playerName + " got penalized! Don't slap non-matching cards!"
 });
 
 connection.on("updateUserNames", function (players) {
@@ -127,6 +125,9 @@ connection.on("updateUserNames", function (players) {
     
 });
 
+connection.on("updateStatus", function (message) {
+    document.getElementById("statusMessage").innerHTML = message;
+});
 
 connection.on("updateCards", function (displayCards, players, turnIndex) { 
     for (i = 0; i < 5; ++i) {

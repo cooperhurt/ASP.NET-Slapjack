@@ -69,6 +69,10 @@ namespace SlapJack.Hubs
                     }
                     await Clients.All.SendAsync("updateFacePlayed", player.Name, player2, Game.TurnCounter);
                 }
+                if (Game.PileWon){
+                    await Clients.All.SendAsync("updateStatus", Game.PileWinner + " won the pile with a face card!");
+                    Game.PileWon = false;
+                }
                 await updateAllCards();
 
                 if (winner != null)
