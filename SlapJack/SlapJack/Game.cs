@@ -123,10 +123,11 @@ namespace SlapJack
         /// </summary>
         /// <param name="player">The player who played the card</param>
         /// <returns>IF the play actually happened.</returns>
-        public static  bool PlayerPlay(Player player)
+        public static  Player PlayerPlay(Player player)
         {
             if (player.Hand.cards.Any())
             {
+                Player winner;
                 CardsClaimed = false;
                 Card playedCard = player.Hand.cards[0];
                 player.Hand.cards.RemoveAt(0);
@@ -137,7 +138,9 @@ namespace SlapJack
                     ChangeTurn();
                     while(!Players[turnIndex].Hand.cards.Any()){
                         ChangeTurn();
-                        getWinner();
+                        if((winner = getWinner()) != null){
+                            return winner;
+                        }
                     }
                 }
                 else if (TurnCounter == 0)
@@ -147,12 +150,10 @@ namespace SlapJack
                 }
                 else
                     --TurnCounter;
-                
-                
-                return false;
+                    
+                return null;
             }
-            ChangeTurn();
-            return true;
+            return null;
         }
 
         /// <summary>

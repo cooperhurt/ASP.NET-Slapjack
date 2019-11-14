@@ -56,7 +56,7 @@ namespace SlapJack.Hubs
             Player player = Game.GetPlayerByName(user);
             if (Game.Players[Game.turnIndex] == player)
             {
-                bool lost = Game.PlayerPlay(player);
+                Player winner = Game.PlayerPlay(player);
                 //Check Game.FaceCardPlayed for a boolean if a card was played, then check Game.TurnCounter to check what card it is. 0 = Jack, 1 = Queen, 2 = King, 3 = Ace
                 if(Game.FaceCardPlayed){ //Only sends the task if the card played was a face card
                     String player2;
@@ -70,11 +70,11 @@ namespace SlapJack.Hubs
                     await Clients.All.SendAsync("updateFacePlayed", player.Name, player2, Game.TurnCounter);
                 }
                 await updateAllCards();
-                //Current commented this out because it was immediately ending the game on first turn 
-                //if (lost)
-                //{
+
+                if (winner != null)
+                {
                 //    await Clients.All.SendAsync("updateMessage", Game.getWinner());
-                //}
+                }
 
             }
 
