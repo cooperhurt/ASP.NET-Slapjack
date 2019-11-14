@@ -205,6 +205,8 @@ namespace SlapJack
         {
             if (!CardsClaimed && currDeck.cards.Count() >= 2 && currDeck.cards[0].CardNumber == currDeck.cards[1].CardNumber)
                 return  1;
+            else if (!CardsClaimed && currDeck.cards.Count() >= 2 && currDeck.cards[0].CardNumber == currDeck.cards[2].CardNumber)
+                return 1;
             else if (CardsClaimed && currDeck.cards.Count() >= 2) 
                 return  0;
             else 
