@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj": {}
+    "C:\\WeberFall.2019\\CS3750\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj": {}
   },
   "projects": {
-    "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj": {
+    "C:\\WeberFall.2019\\CS3750\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
+        "projectUniqueName": "C:\\WeberFall.2019\\CS3750\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
         "projectName": "SlapJack",
-        "projectPath": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
-        "packagesPath": "C:\\Users\\noret\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\noret\\Documents\\GitHub\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\obj\\",
+        "projectPath": "C:\\WeberFall.2019\\CS3750\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\SlapJack.csproj",
+        "packagesPath": "C:\\Users\\ZmanE\\.nuget\\packages\\",
+        "outputPath": "C:\\WeberFall.2019\\CS3750\\CS3750-GroupAssignment\\SlapJack\\SlapJack\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\noret\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ZmanE\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
