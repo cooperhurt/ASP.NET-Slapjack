@@ -77,9 +77,8 @@ namespace SlapJack.Hubs
 
                 if (winner != null)
                 {
-                //    await Clients.All.SendAsync("updateMessage", Game.getWinner());
+                    await Clients.All.SendAsync("WeHaveAWinner", winner);
                 }
-
             }
 
         }

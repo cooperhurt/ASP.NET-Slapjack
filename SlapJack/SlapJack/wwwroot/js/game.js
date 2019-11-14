@@ -160,4 +160,8 @@ connection.on("updateFacePlayed", function (player1Name, player2Name, turnCounte
             break;
     }
 });
+connection.on("WeHaveAWinner", function (player){
+    alert(player.Name + " has Won! Thanks for playing!");
+    document.location.href = window.location.origin;
+});
 
