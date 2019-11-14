@@ -135,6 +135,10 @@ namespace SlapJack
                 if ((FaceCardPlayed = CheckFaceCard(playedCard)) || TurnCounter < 0)
                 {
                     ChangeTurn();
+                    while(!Players[turnIndex].Hand.cards.Any()){
+                        ChangeTurn();
+                        getWinner();
+                    }
                 }
                 else if (TurnCounter == 0)
                 {
@@ -143,10 +147,12 @@ namespace SlapJack
                 }
                 else
                     --TurnCounter;
-               
-                return true;
+                
+                
+                return false;
             }
-            return false;
+            ChangeTurn();
+            return true;
         }
 
         /// <summary>
