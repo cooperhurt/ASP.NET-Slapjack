@@ -20,26 +20,26 @@ namespace SlapJack
         /// <summary>
         /// This is the deck that the players are currently adding to
         /// </summary>
-        public static Deck currDeck = new Deck(true);
+        public static  Deck currDeck = new Deck(true);
 
         /// <summary>
         /// The index that points out which players turn it is.
         /// </summary>
-        public static int turnIndex = 0;
+        public static  int turnIndex = 0;
         /// <summary>
         /// Counts the number of turns left before the previous players takes the pile
         /// </summary>
-        public static int TurnCounter = -1;
+        public static  int TurnCounter = -1;
 
         /// <summary>
         /// Tells whether the current pile has been claimed or not. Only changes to true on positive slap.
         /// </summary>
-        public static bool CardsClaimed = false;
+        public static  bool CardsClaimed = false;
 
         /// <summary>
         /// This is a blank card image
         /// </summary>
-        public static Card blankCard = new Card()
+        public static  Card blankCard = new Card()
         {
             image = "img/gray_back.png"
         };
@@ -56,7 +56,7 @@ namespace SlapJack
         /// <param name="name">This is the object that we want the name for</param>
         ///<returns>A players name</returns>
         ///
-        public static Player GetPlayerByName(string name) {
+        public static  Player GetPlayerByName(string name) {
             foreach (Player player in Players) {
                 if (name == player.Name) {
                     return player;
@@ -69,7 +69,7 @@ namespace SlapJack
         /// This will add a player to the game
         /// </summary>
         /// <param name="user">This is the name of the player who wants to join the game</param>
-        public static void AddPlayer(string user)
+        public static  void AddPlayer(string user)
         {
             Player newPlayer = new Player()
             {
@@ -83,7 +83,7 @@ namespace SlapJack
         /// <summary>
         /// This will deal the hands to the player
         /// </summary>
-        public static void DealHand()
+        public static  void DealHand()
         {
             int deskSize = currDeck.cards.Count() / Players.Count();
             //Split deck evenly
@@ -103,7 +103,7 @@ namespace SlapJack
         /// <summary>
         /// This will change the turn for the player
         /// </summary>
-        public static void ChangeTurn() {
+        public static  void ChangeTurn() {
             if (!(++turnIndex < Players.Count()))
             {
                 turnIndex = 0;
@@ -114,7 +114,7 @@ namespace SlapJack
         /// This will give the middle deck to the player
         /// </summary>
         /// <param name="player">This is the player that we need to add the cards to</param>
-        public static void TakePile(Player player) {
+        public static  void TakePile(Player player) {
             player.Hand.cards.AddRange(currDeck.cards);
             currDeck.cards.RemoveAll( c => true);
             turnIndex = Players.IndexOf(player);
@@ -126,7 +126,7 @@ namespace SlapJack
         /// </summary>
         /// <param name="player">The player who played the card</param>
         /// <returns>IF the play actually happened.</returns>
-        public static bool PlayerPlay(Player player)
+        public static  bool PlayerPlay(Player player)
         {
             if (player.Hand.cards.Any())
             {
@@ -159,7 +159,7 @@ namespace SlapJack
         /// This will determine the winner of the game
         /// </summary>
         /// <returns>The winner of the game</returns>
-        public static Player getWinner()
+        public static  Player getWinner()
         {
             foreach (Player curr in Players)
             {
@@ -176,7 +176,7 @@ namespace SlapJack
         /// </summary>
         /// <param name="card">The card that was palyed</param>
         /// <returns>A Boolean if it is a face card or not</returns>
-        public static bool CheckFaceCard(Card card)
+        public static  bool CheckFaceCard(Card card)
         {
             bool isFaceCard = false;
             switch (card.num)
@@ -207,17 +207,19 @@ namespace SlapJack
         /// Returns whether the individual won the cards
         /// </summary>
         /// <returns>1 take the pot, 0 no change, -1 penalize</returns>
-        public static int Slap()
+        public static  int Slap()
         {
             if (!CardsClaimed && currDeck.cards.Count() >= 2 && currDeck.cards[0].CardNumber == currDeck.cards[1].CardNumber)
                 return  1;
+            else if (!CardsClaimed && currDeck.cards.Count() >= 2 && currDeck.cards[0].CardNumber == currDeck.cards[2].CardNumber)
+                return 1;
             else if (CardsClaimed && currDeck.cards.Count() >= 2) 
                 return  0;
             else 
                 return -1;
         }
 
-        public static void Penalize(Player player) {
+        public static  void Penalize(Player player) {
             for (int i = 0;i < player.Hand.cards.Count() && i < 3; ++i) {
                 currDeck.cards.Insert(currDeck.cards.Count() / 2, player.Hand.cards[0]);
                 player.Hand.cards.RemoveAt(0);
