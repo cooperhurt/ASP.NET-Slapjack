@@ -46,6 +46,9 @@ namespace SlapJack
 
 
         public static Boolean FaceCardPlayed { get; set; }
+        public static String PileWinner { get; set; }
+
+        public static Boolean PileWon { get; set; }
 
         /// <summary>
         /// This will get the players name
@@ -140,6 +143,9 @@ namespace SlapJack
                 {
                     turnIndex = ((turnIndex - 1) == -1) ? Players.Count() - 1 : turnIndex - 1;
                     TakePile(Players[turnIndex]);
+                    PileWinner = Players[turnIndex].Name;
+                    PileWon = true;
+
                 }
                 else
                     --TurnCounter;
