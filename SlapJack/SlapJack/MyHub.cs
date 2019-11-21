@@ -12,9 +12,15 @@ namespace SlapJack.Hubs
     {
         public async Task StartGame(string user)
         {
+            Random rand = new Random();
+
+            if (Game.Players.Count > 1) {
+                int gameNumber1 = rand.Next(1000, 9999);
+                Game.StartNewGame(user, gameNumber1);
+                return;
+            }
             Game.AddPlayer(user);
 
-            Random rand = new Random();
             int gameNumber = rand.Next(1000, 9999);
             Game.gameID = gameNumber;
         }

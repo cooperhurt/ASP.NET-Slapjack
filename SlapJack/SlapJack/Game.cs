@@ -175,6 +175,7 @@ namespace SlapJack
                     
                 return null;
             }
+            ChangeTurn();
             return null;
         }
 
@@ -193,7 +194,7 @@ namespace SlapJack
 
             }
 
-            if (winner.Count == 0)
+            if (winner.Count == 1)
                 return winner[0];
 
             return null;

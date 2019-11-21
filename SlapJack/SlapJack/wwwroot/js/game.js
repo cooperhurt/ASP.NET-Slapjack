@@ -130,9 +130,11 @@ connection.on("updateStatus", function (message) {
 });
 
 connection.on("updateCards", function (displayCards, players, turnIndex) { 
-    for (i = 0; i < 5; ++i) {
-        document.getElementById("card" + i).src = displayCards[i].image;
-    }
+    document.getElementById("card" + 0).src = displayCards[0].image;
+    document.getElementById("card" + 1).src = displayCards[1].image;
+    document.getElementById("card" + 2).src = displayCards[2].image;
+    document.getElementById("card" + 3).src = displayCards[3].image;
+    document.getElementById("card" + 4).src = displayCards[4].image;
     document.getElementById("currentTurn").innerHTML = players[turnIndex].name;
     if (document.getElementById("myName").value == players[0].name) {
         document.getElementById("numberOfCards").innerHTML = players[0].hand.cards.length;
