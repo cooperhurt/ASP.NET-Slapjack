@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SlapJack
@@ -121,9 +122,7 @@ namespace SlapJack
         /// </summary>
         public static  void ChangeTurn() {
             if (!(++turnIndex < Players.Count()))
-            {
                 turnIndex = 0;
-            }
         }
 
         /// <summary>
@@ -137,6 +136,7 @@ namespace SlapJack
             TurnCounter = -1;
         }
 
+         public static Boolean swapDeck = false;
         /// <summary>
         /// This is the method that will play the card for the player
         /// </summary>
@@ -164,11 +164,8 @@ namespace SlapJack
                 }
                 else if (TurnCounter == 0)
                 {
-                    turnIndex = ((turnIndex - 1) == -1) ? Players.Count() - 1 : turnIndex - 1;
-                    TakePile(Players[turnIndex]);
-                    PileWinner = Players[turnIndex].Name;
-                    PileWon = true;
-
+                    swapDeck = true;
+                    return null;
                 }
                 else
                     --TurnCounter;
@@ -177,6 +174,15 @@ namespace SlapJack
             }
             ChangeTurn();
             return null;
+        }
+
+        public static void testFunction()
+        {
+            turnIndex = ((turnIndex - 1) == -1) ? Players.Count() - 1 : turnIndex - 1;
+            TakePile(Players[turnIndex]);
+            PileWinner = Players[turnIndex].Name;
+            PileWon = true;
+            swapDeck = false;
         }
 
         /// <summary>
@@ -191,7 +197,6 @@ namespace SlapJack
             {
                 if (curr.Hand.cards.Count() > 0)
                     winner.Add(curr);
-
             }
 
             if (winner.Count == 1)
@@ -248,6 +253,10 @@ namespace SlapJack
                 return -1;
         }
 
+        /// <summary>
+        /// This will penalize the player if it is an invalid turn
+        /// </summary>
+        /// <param name="player">This is the player that is being penalized</param>
         public static  void Penalize(Player player) {
             for (int i = 0;i < player.Hand.cards.Count() && i < 3; ++i) {
                 currDeck.cards.Insert(currDeck.cards.Count() / 2, player.Hand.cards[0]);

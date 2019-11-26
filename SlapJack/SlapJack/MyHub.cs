@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 
@@ -67,12 +68,10 @@ namespace SlapJack.Hubs
                 if(Game.FaceCardPlayed){ //Only sends the task if the card played was a face card
                     String player2;
                     if (player.Name != Game.Players[0].Name)
-                    {
                         player2 = Game.Players[0].Name;
-                    } else
-                    {
+                    else
                         player2 = Game.Players[1].Name;
-                    }
+                    
                     await Clients.All.SendAsync("updateFacePlayed", player.Name, player2, Game.TurnCounter);
                 }
                 if (Game.PileWon){
@@ -84,6 +83,13 @@ namespace SlapJack.Hubs
                 if (winner != null)
                 {
                     await Clients.All.SendAsync("WeHaveAWinner", winner);
+                }
+                if (Game.swapDeck)
+                {
+                    updateAllCards();
+                    Thread.Sleep(1000);
+                    Game.testFunction();
+                    updateAllCards();
                 }
             }
 
