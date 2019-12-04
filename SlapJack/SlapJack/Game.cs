@@ -258,7 +258,7 @@ namespace SlapJack
         /// </summary>
         /// <param name="player">This is the player that is being penalized</param>
         public static  void Penalize(Player player) {
-            for (int i = 0;i < player.Hand.cards.Count() && i < 3; ++i) {
+            for (int i = 0;i < player.Hand.cards.Count() && i < 2; ++i) {
                 currDeck.cards.Insert(currDeck.cards.Count() / 2, player.Hand.cards[0]);
                 player.Hand.cards.RemoveAt(0);
             }

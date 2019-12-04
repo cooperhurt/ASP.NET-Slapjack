@@ -116,23 +116,23 @@ connection.on("penalized", function (playerName) {
 });
 
 connection.on("updateUserNames", function (players) {
-    for (var i = 1; i <= players.length; i++){
-        if (document.getElementById("player" + i) == null) {
-            document.getElementById("playerInfo").innerHTML += "<button class='btn btn-success pull-right' >   Player" + i.toString() + "'s Name:</button><input type=\"text\" id=\"player" + i.toString() + " value=\"\" disabled />"; 
-        }
-        document.getElementById("player" + i).value = players[i-1].name;
-    }
-
-
-
-    //document.getElementById("player1").value = players[0].name;
-    //document.getElementById("player2").value = players[1].name;
-    //document.getElementById("player3").value = players[2].name;
-    //if (document.getElementById("myName").value == players[0].name) {
-    //    document.getElementById("numberOfCards").innerHTML = players[0].hand.cards.length;
-    //} else {
-    //    document.getElementById("numberOfCards").innerHTML = players[1].hand.cards.length;
+    //for (var i = 1; i <= players.length; i++){
+    //    if (document.getElementById("player" + i) == null) {
+    //        document.getElementById("playerInfo").innerHTML += "<button class='btn btn-success pull-right' >   Player" + i.toString() + "'s Name:</button><input type=\"text\" id=\"player" + i.toString() + " value=\"\" disabled />"; 
+    //    }
+    //    document.getElementById("player" + i).value = players[i-1].name;
     //}
+
+
+
+    document.getElementById("player1").value = players[0].name;
+    document.getElementById("player2").value = players[1].name;
+    //document.getElementById("player3").value = players[2].name;
+    if (document.getElementById("myName").value == players[0].name) {
+        document.getElementById("numberOfCards").innerHTML = players[0].hand.cards.length;
+    } else {
+        document.getElementById("numberOfCards").innerHTML = players[1].hand.cards.length;
+    }
     
 });
 
