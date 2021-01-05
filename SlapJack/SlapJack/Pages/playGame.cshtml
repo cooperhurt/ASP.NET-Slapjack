@@ -1,49 +1,196 @@
 ﻿@page
 @model SlapJack.Pages.playGameModel
 @{
-    ViewData["Title"] = "playGame";
+    ViewData["Title"] = "Play Eyptian Rat Screw";
 }
 
-
-<button class='btn btn-success pull-right'>
-    Player 1's Name:
-</button>
-<button type="button" id="player1Name" class="btn btn-light" value=""></button>
-<script>
-    var name = prompt("What is your name?");
-    document.getElementById("player1Name").innerHTML = name;
-</script>
-
-<button class='btn btn-success pull-right'>
-    Player 2's Name:
-</button>
-<asp:Button ID="AddButton" Text="Add" OnClick="AddButton_Click" runat="server" />
+    <div id="playerInfo" style="visibility: hidden;">
+        <button class='btn btn-success pull-right'>
+            Player 1's Name:
+        </button>
+        <input type="text" id="player1" value="" disabled />
 
 
-<h1>playGame</h1>
+        <button class='btn btn-success pull-right'>
+            Player 2's Name:
+        </button>
+        <input type="text" id="player2" value="" disabled />
 
+        <input type="text" id="myName" value="" hidden />
+
+    </div>
+
+
+<h1>Play Eyptian Rat Screw!</h1>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Launch demo modal
-</button>
+<div id="GameInfo">
+    <button id="startPlay" type="button" style="" class="btn btn-primary" data-toggle="modal" data-target="#playGame">
+        Play/Start Game
+    </button>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#instructions">
+        Instructions
+    </button>
+</div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="playGame" tabindex="-1" role="dialog" aria-labelledby="playGame" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Start Game</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Join/Start Game</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <h4>Joining a Game</h4>
+                <ul>
+                    <li>Another user has started a game, and you have a game ID</li>
+                </ul>
+                <h4>Start a Game</h4>
+                <ul>
+                    <li>This will generate a game ID, give this to another player</li>
+                    <li>This will start a new game, not pick up a game.</li>
+                </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button"  data-toggle="modal" class="btn btn-secondary" data-dismiss="modal" onclick="joinGamePrompt()">Join Game</button>
+                <button id="startGame"  data-toggle="modal" type="button" class="btn btn-primary">Start Game</button>
             </div>
         </div>
     </div>
 </div>
+
+
+
+<div class="modal fade" id="instructions" tabindex="-1" role="dialog" aria-labelledby="instructions" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">How to Play</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="rules">
+                <h3>How to play Egyptian Rat Screw</h3>
+                <ul class="list-group">
+                    <li class="list-group-item active"><b>Home the game Plays:</b></li>
+                    <li class="list-group-item">The game starts by shuffling a deck of 52 cards into two piles of 26 cards, each player having a pile.  The main deck in the middle has 0 cards.</li>
+                    <li class="list-group-item list-group-item-secondary">Each player takes turns playing (usually) one card at a time from his or her hand into the main deck.</li>
+                    <li class="list-group-item">You can slap if two successive cards are the same value (2-10, J, Q, K, A) appear on the main deck stack. Suits don't matter.  The winner of the slap plays the next card.</li>
+                    <li class="list-group-item list-group-item-secondary">Slapping illegally is penalized by losing two cards into the BOTTOM of the main deck. Turn order resumes as it should.</li>
+                    <li class="list-group-item">Each player takes turns alternating placing a card into the main deck.</li>
+                    <li class="list-group-item active"><b>How Face Cards work:</b></li>
+                    <li class="list-group-item">If a player plays a Queen, the other player must play 2 cards. If any of those two cards are a face card (J, Q, K, or A), then the rule restarts for that face card. Note, if the first card was Q, then it's slappable. If that card was 2-10, the person who played the Q gets the main deck.
+                    <li class="list-group-item list-group-item-secondary">If a player plays a Jack, the other player must play 3 cards. If any of those three cards are a face card (J, Q, K, or A), then the rule restarts for that face card. Note, if the first card was K, then it's slappable. If that card was 2-10, the person who played the K  gets the main deck.</li>
+                    <li class="list-group-item">If a player plays a King, the other player must play 4 cards. If any of those four cards are a face card (J, Q, K, or A), then the rule restarts for that face card. Note, if the first card was K, then it's slappable. If that card was 2-10, the person who played the K  gets the main deck.</li>
+                    <li class="list-group-item list-group-item-secondary">If a player plays a Ace, the other player must play 4 cards. If any of those four cards are a face card (J, Q, K, or A), then the rule restarts for that face card. Note, if the first card was K, then it's slappable. If that card was 2-10, the person who played the K  gets the main deck.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="status" class="container rounded border border-primary" style="background-color:#eee; margin-top:15px;">
+    <div class="row">
+        <div class="col-2">
+            <span class="font-weight-bold" style="max-width:15%">Turn: </span><span id="currentTurn"></span>
+        </div>
+        <div class="col-10">
+            <span class="font-weight-bold" style="max-width:15%">Status: </span><span id="statusMessage"></span>
+        </div>
+    </div>
+</div>
+
+<div id="gameArena" class="container rounded border border-primary gamewindow" style="background-color:#eee;height:800px;margin-top:15px; visibility: hidden;" >
+    <div class="row flex-column flex-md-row" style="min-height:100%">
+        <div id="deckPlay" class="col-lg-6 gamehighlight" style="min-height:100%;box-shadow: 2px,2px;" onclick="">
+            <div class="row rounded-bottom border border-dark" style="min-height:10%;background-color:#ccc">
+                <div class="col-12" style="min-height:100%">
+                    <div class="row align-items-center" style="min-height:100%">
+                        <div class="col text-center" style="min-height:100%">
+                            <span class="h1" style="line-height:0.55em">Deck</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center" style="min-height:80%;max-height:80%"> <!-- Might need  a code right here-->
+                <div class="col-12 align-content-center" style="min-height:100% !important;">
+                    <div id="deck" align="center">
+                        <img id="deck1" src="~/img/gray_back.png" class="img-fluid" style="height:400px;display:block;width:auto;position:relative;left:-5px;" />
+                        <img id="deck2" src="~/img/gray_back.png" class="img-fluid" style="height:400px;display:block;width:auto;position:relative;margin-top:-390px;left:-2.5px" />
+                        <img id="deck3" src="~/img/gray_back.png" class="img-fluid" style="height:400px;display:block;width:auto;position:relative;margin-top:-390px;left:0px" />
+                        <img id="deck4" src="~/img/gray_back.png" class="img-fluid" style="height:400px;display:block;width:auto;position:relative;margin-top:-390px;left:2.5px" />
+                        <img id="deck5" src="~/img/gray_back.png" class="img-fluid" style="height:400px;display:block;width:auto;position:relative;margin-top:-390px;left:5px" />
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="min-height:10%">
+                <div class="col-12 rounded-top border border-dark" style="min-height:100% !important;background-color:#ccc">
+                    <div class="row align-items-center" style="min-height:100%">
+                        <div class="col text-center" style="min-height:100%; line-height:0.55em">
+                            <span id="numberOfCards" class="h1" style=" line-height:0.55em"></span><span class="h1" style=" line-height:0.55em"> Cards</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="slapDeck"  class="col-lg-6 gamehighlight" style="min-height:100%;">
+            <div class="row rounded-bottom border border-dark" style="min-height:10%;background-color:#ccc;">
+                <div class="col-12" style="min-height:100%">
+                    <div class="row align-items-center" style="min-height:100%">
+                        <div class="col text-center" style="min-height:100%">
+                            <span class="h1" style="line-height:0.55em">Slap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center" style="min-height:90%;max-height:90%">
+                <div class="col-12 text-center" style="min-height:100% !important;">
+                    <img id="card4" src="~/img/gray_back.png" class="img-fluid" style="height:400px;position:relative;width:auto;left:-75px;" />
+                    <img id="card3" src="~/img/gray_back.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:-37.5px" />
+                    <img id="card2" src="~/img/gray_back.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:0px" />
+                    <img id="card1" src="~/img/gray_back.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:37.5px" />
+                    <img id="card0" src="~/img/gray_back.png" class="img-fluid" style="height:400px;position:relative;width:auto;margin-top:-350px;left:75px" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .col-md-3 {
+        margin: 10px;
+    }
+</style>
+
+
+
+<div class="container" hidden>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-6">&nbsp;</div>
+        <div class="col-6">
+            User..........<input type="text" id="userInput" disabled />
+            <br />
+            Message...<input type="text" id="messageInput" />
+            <input type="button" id="sendButton" value="Send Message" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">&nbsp;</div>
+        <div class="col-6">
+            <ul id="messagesList"></ul>
+        </div>
+    </div>
+</div>
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+
+<br />

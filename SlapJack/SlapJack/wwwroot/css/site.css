@@ -54,3 +54,15 @@ body {
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.card{
+    width: 150px;
+    height: auto;
+}
+
+/* playGame.cshtml hover text
+-------------------------------------------------- */
+
+div.gamehighlight:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+}

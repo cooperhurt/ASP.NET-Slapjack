@@ -9,6 +9,8 @@ namespace SlapJack.Pages
 {
     public class IndexModel : PageModel
     {
+        public IList<string> Scales { get; set; }
+
         public void OnGet()
         {
 
